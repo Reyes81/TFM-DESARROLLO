@@ -29,5 +29,9 @@
   "COMENTARIO1": "Escriba su comentario",
   "COMENTARIO2": "Su comentario"
 
+},
+"NOTICIAS":{
+  "TODAS":"Todas las noticias",
+  "ULTIMAS":"Últimas noticias"
 }
 }

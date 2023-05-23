@@ -28,6 +28,9 @@
   "NINGUNO": "Nessuno",
   "COMENTARIO1": "Scrivi il tuo commento",
   "COMENTARIO2": "Il tuo commento"
-
+},
+"NOTICIAS":{
+  "TODAS":"Todas las noticias",
+  "ULTIMAS":"Últimas noticias"
 }
 }

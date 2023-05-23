@@ -4,7 +4,7 @@
     <a mat-button routerLink="/inicio"><fa-icon [icon]="faHome"></fa-icon> {{ 'HEADER.INICIO' | translate }} </a>
     <a mat-button id="productos" [matMenuTriggerFor]="productos"><fa-icon [icon]="faList"></fa-icon>{{ 'HEADER.PRODUCTOS' | translate }}</a>
     <a mat-button><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
-    <a mat-button><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
+    <a mat-button id="noticias"><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
     <a mat-button routerLink="/contacto"><fa-icon [icon]="faAddressCard"></fa-icon> {{ 'HEADER.CONTACTO' | translate }} </a>
     
 
@@ -50,6 +50,11 @@
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/mineria-y-construccion" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.MINERIA' | translate }}</a>
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/industrial" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.INDUSTRIAL' | translate }}</a>
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/hardware" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.HARDWARE' | translate }}</a>
+    </mat-menu>
+
+    <mat-menu #noticias="matMenu">
+      <a class="submenu" onclick="gotoNews(1)">{{ 'NOTICIAS.TODAS' | translate }}</a>
+      <a class="submenu" onclick="gotoNews(2)">{{ 'NOTICIAS.ULTIMAS' | translate }}</a>
     </mat-menu>
 
   </mat-toolbar>

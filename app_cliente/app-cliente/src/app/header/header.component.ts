@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   changeLanguage(lang:string){
     this.translateService.use(lang);
     this.chageTranslateService.setLanguage(lang);
+  }
 
-}
+  gotoNews(option:Number){}
 }

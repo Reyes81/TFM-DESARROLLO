@@ -28,5 +28,9 @@
   "NINGUNO": "None",
   "COMENTARIO1": "Write your comment",
   "COMENTARIO2": "Your comment"
+},
+"NOTICIAS":{
+  "TODAS":"Todas las noticias",
+  "ULTIMAS":"Últimas noticias"
 }
 }

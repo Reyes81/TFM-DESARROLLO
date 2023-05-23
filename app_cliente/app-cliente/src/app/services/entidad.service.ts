@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
 import { Entidad } from '../compartido/entidad';
 import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class EntidadService {
 
+  entidad:Entidad = new Entidad();
   constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService) { }
 
   //Para obtener todas las entidades del JSON
@@ -24,5 +26,13 @@ export class EntidadService {
 
   getEntidadesIds(): Observable<number[] | any>{
     return this.getEntidades().pipe(map(entidades=>entidades.map(entidad=>entidad.id)));
+  }
+
+  public setEntidad(entity:Entidad){
+    this.entidad = entity;
+  }
+
+  public getEntidad2():Entidad{
+    return this.entidad;
   }
 }
