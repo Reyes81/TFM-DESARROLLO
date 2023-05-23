@@ -2,62 +2,62 @@
   "entidades": [
     {
       "id": 1,
-      "nombre": "Simulador de ECH",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/ech_tfm.jpg"
+      "name": "Simulador de ECH",
+      "environment": "Harbour",
+      "image": "assets/img/slider/ech_tfm.jpg"
     },
     {
       "id": 2,
-      "nombre": "Simulador de Heavy Forklift",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/heavy_forklift_tfm.jpg"
+      "name": "Simulador de Heavy Forklift",
+      "environment": "Harbour",
+      "image": "assets/img/slider/heavy_forklift_tfm.jpg"
     },
     {
       "id": 3,
-      "nombre": "Simulador de MHC",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/mhc_tfm.jpg"
+      "name": "Simulador de MHC",
+      "environment": "Harbour",
+      "image": "assets/img/slider/mhc_tfm.jpg"
     },
     {
       "id": 4,
-      "nombre": "Simulador de Reach-Stacker",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/reach_tfm.jpg"
+      "name": "Simulador de Reach-Stacker",
+      "environment": "Harbour",
+      "image": "assets/img/slider/reach_tfm.jpg"
     },
     {
       "id": 5,
-      "nombre": "Simulador de RMG",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/rmg_tfm.jpg"
+      "name": "Simulador de RMG",
+      "environment": "Harbour",
+      "image": "assets/img/slider/rmg_tfm.jpg"
     },
     {
       "id": 6,
-      "nombre": "Simulador de RoRo",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/roro_tfm.jpg"
+      "name": "Simulador de RoRo",
+      "environment": "Harbour",
+      "image": "assets/img/slider/roro_tfm.jpg"
     },
     {
       "id": 7,
-      "nombre": "Simulador de RoRo",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/roro_tfm.jpg"
+      "name": "Simulador de RoRo",
+      "environment": "Harbour",
+      "image": "assets/img/slider/roro_tfm.jpg"
     },
     {
       "id": 8,
-      "nombre": "Simulador de RTG",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/rtg_tfm.jpg"
+      "name": "Simulador de RTG",
+      "environment": "Harbour",
+      "image": "assets/img/slider/rtg_tfm.jpg"
     },
     {
       "id": 9,
-      "nombre": "Simulador de STS",
-      "entorno": "Portuario",
-      "imagen": "assets/img/slider/sts_tfm.jpg"
+      "name": "Simulador de STS",
+      "environment": "Harbour",
+      "image": "assets/img/slider/sts_tfm.jpg"
     }
   ],
   "consultas": [
     {
-      "nombre": "Amparo",
+      "name": "Amparo",
       "empresa": "Consum",
       "telefono": "695307839",
       "email": "amparo@uv.es",
@@ -67,7 +67,7 @@
       "id": 1
     },
     {
-      "nombre": "Alejandro",
+      "name": "Alejandro",
       "empresa": "lsym",
       "telefono": "0658466464",
       "email": "aa@uv.es",
@@ -77,7 +77,7 @@
       "id": 2
     },
     {
-      "nombre": "Alejandro",
+      "name": "Alejandro",
       "empresa": "lsym",
       "telefono": "06464644",
       "email": "a@uv.es",

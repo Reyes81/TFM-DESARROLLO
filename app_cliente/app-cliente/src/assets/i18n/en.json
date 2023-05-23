@@ -6,7 +6,8 @@
     "PRODUCTOS": "Products",
     "INICIO":"Home",
     "SOBRE": "About LSyM",
-    "CONTACTO": "Contact"
+    "CONTACTO": "Contact",
+    "NOTICIAS": "News"
 },
 "PRODUCTOS":{
   "PORTUARIO": "Port",

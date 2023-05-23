@@ -4,7 +4,9 @@
     <a mat-button routerLink="/inicio"><fa-icon [icon]="faHome"></fa-icon> {{ 'HEADER.INICIO' | translate }} </a>
     <a mat-button id="productos" [matMenuTriggerFor]="productos"><fa-icon [icon]="faList"></fa-icon>{{ 'HEADER.PRODUCTOS' | translate }}</a>
     <a mat-button><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
+    <a mat-button><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
     <a mat-button routerLink="/contacto"><fa-icon [icon]="faAddressCard"></fa-icon> {{ 'HEADER.CONTACTO' | translate }} </a>
+    
 
     <div class="flags-div">
 
@@ -40,6 +42,8 @@
           height="20"
           alt="Italiano"></a>
           <app-detalle-licencia hidden="true" [selectedLanguage]=lang ></app-detalle-licencia>
+
+          <div aling="center">{{clientName}}</div>
     </div>
     <mat-menu #productos="matMenu">
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/portuario" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.PORTUARIO' | translate }}</a>

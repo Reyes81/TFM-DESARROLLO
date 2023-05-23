@@ -70,7 +70,7 @@ export class CarruselComponent {
   imageClickHandler(event:number){
 
     for(let i=0; i<this.entidadesArray.length; i++){
-      if(this.entidadesArray[i].nombre == this.imageObject[event].title)
+      if(this.entidadesArray[i].name == this.imageObject[event].title)
         {
             this.entidad = this.entidadesArray[i];
         }

@@ -1,12 +1,5 @@
 const { app, BrowserWindow, shell, ipcMain, webContents } = require("electron");
 const path = require('path')
-const hasp = require('./build/Release/hasp.node');
-
-console.log('exports: ', hasp);
-console.log();
-
-console.log('hasp.getClientName() : ', hasp.getClientName() );
-
 
 function createWindow () {
 

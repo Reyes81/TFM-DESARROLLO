@@ -1,14 +1,14 @@
 export class Entidad{
 
     id:number;
-    imagen: String;
-    nombre: String;
-    entorno: String;
+    image: String;
+    name: String;
+    environment: String;
 
     constructor(){
         this.id = -1;
-        this.imagen = "";
-        this.nombre = "";
-        this.entorno = "";
+        this.image = "";
+        this.name = "";
+        this.environment = "";
     }
 }

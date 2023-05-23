@@ -40,6 +40,7 @@ import { baseURL } from './compartido/baseurl';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Carrusel2Component } from './carrusel2/carrusel2.component';
+import { NoticiasComponent } from './noticias/noticias.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,6 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     EntidadesComponent,
     DetalleLicenciaComponent,
     Carrusel2Component,
+    NoticiasComponent,
 
   ],
   imports: [
