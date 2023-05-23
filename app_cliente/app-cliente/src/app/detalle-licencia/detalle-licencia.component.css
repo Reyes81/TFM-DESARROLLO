@@ -1,0 +1,35 @@
+
+.text_subtitle{
+  color: #2a66c6;
+  display: flex;
+justify-content: center;
+font-size: large;
+font-weight: normal;
+}
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 50px;
+}
+
+#space{
+  height: calc(100vh - 210px);
+display: block !important;
+}
+
+#img{
+margin-right: auto;
+margin-top: 25%;
+margin-bottom: 25%;
+margin-left: auto;
+box-shadow: bisque;
+border-radius: 10px;
+box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+#col{
+
+background-image: url("../../assets/images/background_col.png");
+background-size: contain;
+}
+

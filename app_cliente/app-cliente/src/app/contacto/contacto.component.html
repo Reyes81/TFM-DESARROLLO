@@ -1,0 +1,109 @@
+
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+     <div class="row">
+            <div class="col">
+              <h2 class="text_subtitle"><span>{{ 'CONTACTO.CONTACTO' | translate }}</span></h2>
+              <hr>
+            </div>
+     </div>
+
+     <div class="row">
+    <div class="col-md-5">
+      <h3 class="text_subtitle">{{ 'CONTACTO.LOCALIZACION' | translate }}</h3>
+      <hr>
+    	<address style="text-size-adjust: 80%">
+    		  Calle Catedrático José Beltrán nº:2<br> C.P: 46980 Paterna, Valencia<br> España<br>
+          <br>
+     		 <i><fa-icon [icon]="faPhone"></fa-icon></i>: +34 647 78 09 29<br>
+     		 <i><fa-icon [icon]="faEnvelope"></fa-icon></i>:
+     		 <a href="mailto:lsym@uv.es">lsym@uv.es</a>
+    	</address>
+
+      <h3 class="text_subtitle">{{ 'CONTACTO.MAPA' | translate }}</h3>
+          <hr>
+          <google-map width="210" height="210" [center] = "position">
+
+            <map-marker
+              [position] = "position"
+              [label] = "label"
+              label.color
+            ></map-marker>
+          </google-map>
+      </div>
+
+        <div class="col-md-6">
+                <h3 class="text_subtitle">{{ 'CONTACTO.PREGUNTA' | translate }}</h3>
+                <hr>
+      <form novalidate [formGroup]="consultaForm">
+            <div class="form-group row">
+
+              <div class="form-group col-md-6">
+                <label for="inputName">{{ 'CONTACTO.NOMBRE' | translate }}</label>
+                <input type="text" class="form-control" id="inputname" formControlName="nombre" placeholder="{{ 'CONTACTO.NOMBRE' | translate }}" required>
+                <mat-hint>
+                  <span [hidden]="!(erroresForm.nombre)"> {{erroresForm.nombre}}</span>
+                </mat-hint>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputCompany">{{ 'CONTACTO.EMPRESA' | translate }}</label>
+
+                <input type="text" class="form-control" id="inputCompany" formControlName="empresa" placeholder="{{ 'CONTACTO.EMPRESA' | translate }}" required>
+                <mat-hint>
+                  <span [hidden]="!(erroresForm.empresa)"> {{erroresForm.empresa}}</span>
+                </mat-hint>
+              </div>
+            </div>
+            <br>
+            <div class="form-group row">
+
+              <div class="form-group col-md-6">
+                <label formco="inputPhone">{{ 'CONTACTO.TELEFONO' | translate }}</label>
+                <input type="tel" class="form-control" id="inputPhone" formControlName="telefono" placeholder="{{ 'CONTACTO.TELEFONO' | translate }}" required>
+                <mat-hint>
+                  <span [hidden]="!(erroresForm.telefono)"> {{erroresForm.telefono}}</span>
+                </mat-hint>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="inputEMail">E-Mail</label>
+
+                <input type="email" class="form-control" id="inputEmail" formControlName="email" placeholder="E-Mail" required>
+                <mat-hint>
+                  <span [hidden]="!(erroresForm.email)"> {{erroresForm.email}}</span>
+                </mat-hint>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <mat-slide-toggle formControlName="contactar"><p class="slice">{{ 'CONTACTO.CONTACTAR' | translate }}</p></mat-slide-toggle>
+            </div>
+            <div class="col-md-3 no-padding">
+
+              <select formControlName="tipocontacto" class="form-select-sm"  aria-label="Default select example">
+                <option selected disabled>{{ 'CONTACTO.TIPO' | translate }}</option>
+                <option *ngFor="let tipo of tipoContacto" [value]="tipo">
+                  {{ tipo }}
+              </option>
+              </select>
+              </div>
+            <br>
+            <div class="mb-1">
+              <label for="mensajeTextArea" class="form-label">{{ 'CONTACTO.COMENTARIO1' | translate }}</label>
+              <textarea class="form-control"  formControlName="mensaje" placeholder="{{ 'CONTACTO.COMENTARIO2' | translate }}" id="mensaje" rows="4"></textarea>
+            </div>
+            <button type="button" (click)="onSubmit()" class="btn btn-sm btn-primary">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+

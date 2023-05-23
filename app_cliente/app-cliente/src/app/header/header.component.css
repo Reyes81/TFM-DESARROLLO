@@ -1,0 +1,42 @@
+body{
+  background: #494949;
+}
+
+a {
+  font-family:Arial, Helvetica, sans-serif;
+
+  font-size: medium;
+  color: white;
+  margin-left: 20px;
+}
+
+.toolbar {
+  background-color: #494949;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.submenu{
+  size: 5px;
+  box-shadow: 5px;
+  border-radius: 10px;
+  border: aliceblue;
+}
+
+.flags{
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+.flags-div{
+  width: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding-right: 10px;
+}

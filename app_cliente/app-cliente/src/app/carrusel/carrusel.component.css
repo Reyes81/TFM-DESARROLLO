@@ -1,0 +1,72 @@
+.minh-100 {
+  height: 100vh;
+}
+
+.slide {
+  box-shadow: 50px;
+
+}
+
+h2.linea:before {
+  border-top: 3px solid #2a66c6;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  z-index: -1;
+}
+
+h2 {
+  font: 25px Helvetica;
+  margin-top: 30px;
+  text-align: center;
+}
+h2.linea {
+  position: relative;
+  z-index: 1;
+  color: #2a66c6;
+}
+h2.linea:before {
+  border-top: 1px solid #2a66c6;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  z-index: -1;
+}
+h2.linea span {
+
+  background: #fff;
+  padding: 0 15px;
+}
+
+#carrusel{
+
+  box-shadow: 30px;
+
+}
+#grid-size{
+  height: calc(100vh - 210px);
+  display: block !important;
+}
+
+.text_subtitle{
+  color: #2a66c6;
+  font-size: large;
+}
+
+#centered-elements{
+  margin: 0;
+position: relative;
+top: 30%;
+transform: translateY(-50%);
+display: block;
+}

@@ -1,0 +1,53 @@
+
+  <mat-toolbar class="toolbar" style="padding-left: 0%; padding-right: 0%;">
+    <span class="logo"><img src="assets/images/lsym_no_text.png" height=65 width=180></span>
+    <a mat-button routerLink="/inicio"><fa-icon [icon]="faHome"></fa-icon> {{ 'HEADER.INICIO' | translate }} </a>
+    <a mat-button id="productos" [matMenuTriggerFor]="productos"><fa-icon [icon]="faList"></fa-icon>{{ 'HEADER.PRODUCTOS' | translate }}</a>
+    <a mat-button><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
+    <a mat-button routerLink="/contacto"><fa-icon [icon]="faAddressCard"></fa-icon> {{ 'HEADER.CONTACTO' | translate }} </a>
+
+    <div class="flags-div">
+
+    <a class="flags" (click)="changeLanguage('es');"><img
+      src="assets/images/flags/es.png"
+      width="30"
+      height="20"
+      alt="España"></a>
+
+
+    <a class="flags" (click)="changeLanguage('en');"><img
+      src="assets/images/flags/gb.png"
+      width="30"
+      height="20"
+      alt="English"></a>
+
+
+    <a class="flags" (click)="changeLanguage('fr');"><img
+      src="assets/images/flags/fr.png"
+      width="30"
+      height="20"
+      alt="French"></a>
+
+      <a class="flags" (click)="changeLanguage('po');"><img
+        src="assets/images/flags/pt.png"
+        width="30"
+        height="20"
+        alt="Portugal"></a>
+
+        <a class="flags" (click)="changeLanguage('it');"><img
+          src="assets/images/flags/it.png"
+          width="30"
+          height="20"
+          alt="Italiano"></a>
+          <app-detalle-licencia hidden="true" [selectedLanguage]=lang ></app-detalle-licencia>
+    </div>
+    <mat-menu #productos="matMenu">
+      <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/portuario" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.PORTUARIO' | translate }}</a>
+      <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/mineria-y-construccion" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.MINERIA' | translate }}</a>
+      <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/industrial" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.INDUSTRIAL' | translate }}</a>
+      <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/hardware" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.HARDWARE' | translate }}</a>
+    </mat-menu>
+
+  </mat-toolbar>
+
+

@@ -1,0 +1,32 @@
+{
+  "DETALLE": {
+      "LICENCIA": "Licence"
+  },
+  "HEADER": {
+    "PRODUCTOS": "Produits",
+    "INICIO":"Début",
+    "SOBRE": "À propos de LSyM",
+    "CONTACTO": "Contact"
+},
+"PRODUCTOS":{
+  "PORTUARIO": "Port",
+  "MINERIA": "Minière et Construction",
+  "INDUSTRIAL": "Industriel",
+  "HARDWARE": "Solutions Matérielles"
+},
+"CONTACTO":{
+  "CONTACTO": "Contact",
+  "LOCALIZACION": "Emplacement",
+  "MAPA": "Carte",
+  "NOMBRE": "Nom",
+  "EMPRESA": "Entreprise",
+  "TELEFONO": "Téléphone",
+  "PREGUNTA": "Demandez-nous ce que vous voulez",
+  "CONTACTAR": "Voulez-vous que nous vous contactions ?",
+  "TIPO": "Type de contact",
+  "NINGUNO": "Aucun",
+  "COMENTARIO1": "Écrivez votre Commentaire",
+  "COMENTARIO2": "Votre commentaire"
+
+}
+}

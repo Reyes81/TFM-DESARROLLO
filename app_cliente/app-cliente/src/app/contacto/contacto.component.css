@@ -1,0 +1,45 @@
+h2 {
+  font: 25px helvetica;
+  margin-top: 30px;
+  text-align: center;
+}
+h2.linea {
+  position: relative;
+  z-index: 1;
+  color: #2a66c6;
+}
+h2.linea:before {
+  border-top: 1px solid #2a66c6;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 75%;
+  z-index: -1;
+}
+h2.linea span {
+
+  background: #fff;
+  padding: 0 15px;
+}
+
+.text_subtitle{
+  color: #2a66c6;
+}
+
+.slice {
+ color:#2a66c6;
+ margin-top: 7px;
+}
+
+.metodo {
+  height: 10px;
+}
+
+.select {
+  padding:10px;
+
+}
