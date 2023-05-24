@@ -31,7 +31,6 @@ export class DetalleLicenciaComponent {
 
   ngOnInit(): void {
     this.entidad = this.miServicio.getEntidad2();
-    alert(this.entidad.name);
     this.title = this.entidad.name;
   }
 }

@@ -57,23 +57,25 @@ export class CarruselComponent {
     }
     ];
 
+    entidadesSel: Entidad[] = [];
     entidadesArray: Entidad[] = [];
     entidad:Entidad = new Entidad();
     errorMensaje: string= "";
 
-  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadService:EntidadService, private miServicio:EntidadService){}
-
-  ngOnInit(){
-    this.entidadService.getEntidades().subscribe(entidades => this.entidadesArray= entidades,  errorMensaje=> this.errorMensaje= <any>errorMensaje);
-    
+  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadesService:EntidadService, private miServicio:EntidadService){
+    this.entidadesService.getEntidades().subscribe(entidades => this.entidadesArray= entidades,  errorMensaje=> this.errorMensaje= <any>errorMensaje);
+    var index = Math.floor(Math.random() * this.entidadesArray.length);
   }
+  
+
 
   imageClickHandler(event:number){
+    alert(this.entidadesArray.length);
     for(let i=0; i<this.entidadesArray.length; i++){
       if(this.entidadesArray[i].name == this.imageObject[event].title)
         {
-         
             this.entidad = this.entidadesArray[i];
+            
         }
     }
 
@@ -84,7 +86,6 @@ export class CarruselComponent {
     this.router.navigate(["/detalle-licencia"]);
 
   }
-
   }
 
 

@@ -19,20 +19,4 @@ export class AppComponent {
 
   }
 
-  ngOnInit(): void {
-    this.setRandomEntitys();
-  }
-
-  setRandomEntitys():void{
-
-    this.entidadesService.getEntidades().subscribe(entidades => this.entidadesArray=entidades,  errorMensaje=> this.errorMensaje= <any>errorMensaje);
-    alert(this.entidadesArray.length);
-    var index = Math.floor(Math.random() * this.entidadesArray.length);
-
-    for (let i=0; i<index; i++){
-      this.entidadesSel.push(this.entidadesArray[i]);
-    }
-    this.entidadesService.setEntidades(this.entidadesSel);
-    
-  };
 }

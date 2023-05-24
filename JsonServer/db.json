@@ -38,22 +38,23 @@
     },
     {
       "id": 7,
-      "name": "Simulador de RoRo",
-      "environment": "Harbour",
-      "image": "assets/img/slider/roro_tfm.jpg"
-    },
-    {
-      "id": 8,
       "name": "Simulador de RTG",
       "environment": "Harbour",
       "image": "assets/img/slider/rtg_tfm.jpg"
     },
     {
-      "id": 9,
+      "id": 8,
       "name": "Simulador de STS",
       "environment": "Harbour",
       "image": "assets/img/slider/sts_tfm.jpg"
     }
+  ],
+  
+  "noticias":[
+	{
+		"id": 1,
+		"noticia": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC"
+	}
   ],
   "consultas": [
     {
