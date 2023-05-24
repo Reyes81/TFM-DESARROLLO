@@ -61,17 +61,18 @@ export class CarruselComponent {
     entidad:Entidad = new Entidad();
     errorMensaje: string= "";
 
-  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadService:EntidadService, private miServicio:MiServicioService){}
+  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadService:EntidadService, private miServicio:EntidadService){}
 
   ngOnInit(){
     this.entidadService.getEntidades().subscribe(entidades => this.entidadesArray= entidades,  errorMensaje=> this.errorMensaje= <any>errorMensaje);
+    
   }
 
   imageClickHandler(event:number){
-
     for(let i=0; i<this.entidadesArray.length; i++){
       if(this.entidadesArray[i].name == this.imageObject[event].title)
         {
+         
             this.entidad = this.entidadesArray[i];
         }
     }

@@ -43,14 +43,9 @@ export class HeaderComponent implements OnInit {
     this.chageTranslateService.setLanguage(lang);
   }
 
-  setStateHasp(evt:any):void{
-    this.isChecked = evt.target.checked;
-    alert(evt.target.checked)
-    this.haspService.setStateHasp(this.isChecked);
-  }
-
   updateInitComponent(): void {
-    
+
+    this.haspService.setStateHasp(this.isChecked);
   }
 
   gotoNews(option:Number){}

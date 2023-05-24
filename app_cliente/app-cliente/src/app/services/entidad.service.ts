@@ -13,7 +13,10 @@ import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
 export class EntidadService {
 
   entidad:Entidad = new Entidad();
-  constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService) { }
+  entidadesSel:Entidad[];
+  constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService) {
+    this.entidadesSel = [];
+   }
 
   //Para obtener todas las entidades del JSON
   getEntidades(): Observable<Entidad[]>{
@@ -34,5 +37,13 @@ export class EntidadService {
 
   public getEntidad2():Entidad{
     return this.entidad;
+  }
+
+  setEntidades(entidades:Entidad[]): void{
+    this.entidadesSel = entidades;
+  }
+
+  getEntidadesSel():Entidad[]{
+    return this.entidadesSel;
   }
 }

@@ -9,14 +9,14 @@ import { HaspService } from '../hasp.service';
 
 export class InicioComponent {
 
+  @Input() isHasp:Boolean;
   constructor(private haspService:HaspService) {
     this.isHasp = false;
   }
-  isHasp: Boolean;
-  element:Boolean = false;
-  updateStateHasp(state:any): void{
-    this.isHasp=state;
+ 
+  ngOnInit(): void {
 
+    this.isHasp = this.haspService.getStateHasp();
   }
 
 }
