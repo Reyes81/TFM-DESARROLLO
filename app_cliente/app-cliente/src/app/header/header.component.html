@@ -4,9 +4,9 @@
     <a mat-button routerLink="/inicio"><fa-icon [icon]="faHome"></fa-icon> {{ 'HEADER.INICIO' | translate }} </a>
     <a mat-button id="productos" [matMenuTriggerFor]="productos"><fa-icon [icon]="faList"></fa-icon>{{ 'HEADER.PRODUCTOS' | translate }}</a>
     <a mat-button><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
-    <a mat-button id="noticias"><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
+    <a mat-button id="noticias" routerLink="/noticias"><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
     <a mat-button routerLink="/contacto"><fa-icon [icon]="faAddressCard"></fa-icon> {{ 'HEADER.CONTACTO' | translate }} </a>
-    
+    <div class="checkbox_"><p style="align-self: center; font-size: medium; font-weight: normal;"> <input type="checkbox" style= "border-top:5px ;" [(ngModel)]="isChecked" (change)="updateInitComponent()">Simular Hasp </p></div>
 
     <div class="flags-div">
 
@@ -43,18 +43,13 @@
           alt="Italiano"></a>
           <app-detalle-licencia hidden="true" [selectedLanguage]=lang ></app-detalle-licencia>
 
-          <div aling="center">{{clientName}}</div>
+          <div aling="center" *ngIf="isChecked">{{clientName}}</div>
     </div>
     <mat-menu #productos="matMenu">
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/portuario" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.PORTUARIO' | translate }}</a>
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/mineria-y-construccion" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.MINERIA' | translate }}</a>
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/industrial" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.INDUSTRIAL' | translate }}</a>
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/hardware" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.HARDWARE' | translate }}</a>
-    </mat-menu>
-
-    <mat-menu #noticias="matMenu">
-      <a class="submenu" onclick="gotoNews(1)">{{ 'NOTICIAS.TODAS' | translate }}</a>
-      <a class="submenu" onclick="gotoNews(2)">{{ 'NOTICIAS.ULTIMAS' | translate }}</a>
     </mat-menu>
 
   </mat-toolbar>

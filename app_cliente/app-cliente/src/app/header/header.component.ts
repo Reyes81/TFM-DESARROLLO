@@ -1,8 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import{ faBars,faHome, faInfo, faList, faAddressCard,faSignInAlt, faNewspaper} from'@fortawesome/free-solid-svg-icons';
 import { ChangeTranslateService } from '../services/change-translate.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Hasp } from '../compartido/hasp';
+import { HaspService } from '../hasp.service';
+
 
 @Component({
   selector: 'app-header',
@@ -21,9 +23,12 @@ export class HeaderComponent implements OnInit {
   faSignInAlt = faSignInAlt;
   clientName:String;
 
+  isChecked:Boolean = false;
+
   lang:string='es';
 
-  constructor(@Inject('baseURL') public BaseURL:string, private chageTranslateService:ChangeTranslateService, private translateService:TranslateService) {
+  constructor(@Inject('baseURL') public BaseURL:string, private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
+  private haspService:HaspService) {
     this.translateService.setDefaultLang(this.lang);
     this.clientName="";
 
@@ -36,6 +41,16 @@ export class HeaderComponent implements OnInit {
   changeLanguage(lang:string){
     this.translateService.use(lang);
     this.chageTranslateService.setLanguage(lang);
+  }
+
+  setStateHasp(evt:any):void{
+    this.isChecked = evt.target.checked;
+    alert(evt.target.checked)
+    this.haspService.setStateHasp(this.isChecked);
+  }
+
+  updateInitComponent(): void {
+    
   }
 
   gotoNews(option:Number){}

@@ -14,6 +14,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule} from '@angular/material/menu';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import{ FlexLayoutModule} from'@angular/flex-layout';
 
@@ -76,6 +77,7 @@ export function createTranslateLoader(http: HttpClient) {
     GoogleMapsModule,
     NgImageSliderModule,
     CarouselModule,
+    MatCheckboxModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
