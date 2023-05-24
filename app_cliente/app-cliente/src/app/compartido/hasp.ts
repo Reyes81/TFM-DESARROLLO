@@ -5,7 +5,7 @@ export class Hasp{
     clientNames: String[];
     environments: String[];
     features: String[];
-    subFeatures: String[]; 
+    subFeatures: String[];
 
     constructor(){
 
@@ -21,7 +21,7 @@ export class Hasp{
 
         this.subFeatures = ["F_MOTIONPLATFORM","F_STEREOSCOPIC","F_MULTIDISPLAY","F_USERSDATABASE","F_EVALUATION","F_TRACKER","F_REMOTEINSTRUCTOR","F_DEBRIEFING",
                             "F_REMOTEDATABASE","F_HIDCONTROLS","F_EXERCICEEDITOR","F_COLLABORATIVE","F_SENDINFOLSYM","F_OCULUS","F_THEORY", "F_NOTIMESYNC",
-                            "F_SIMOCRANE"]; 
+                            "F_SIMOCRANE"];
     }
 
     getClientName():String{
