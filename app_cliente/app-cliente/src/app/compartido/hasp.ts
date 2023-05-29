@@ -17,7 +17,7 @@ export class Hasp{
 
         this.id=-1;
         this.clientname="";
-        this.clientNames = ["CEDUC", "SEVASA", "FLC","PSC"];
+        this.clientNames = ["CEDUC", "SEVASA", "FLC", "PSC"];
 
         this.environments = ["Harbour", "Quarry", "Mine", "Warehouse"];
 
