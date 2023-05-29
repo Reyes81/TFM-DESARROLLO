@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.clientName = this.hasp.getClientName();
 
+
   }
 
   changeLanguage(lang:string){
@@ -47,6 +48,11 @@ export class HeaderComponent implements OnInit {
   updateInitComponent(): void {
 
     this.haspService.setStateHasp(this.isChecked);
+
+    if(this.isChecked==true)
+      this.hasp.generateFeatures();
+    else
+    this.hasp.removeFeatures();
   }
 
   gotoNews(option:Number){}
