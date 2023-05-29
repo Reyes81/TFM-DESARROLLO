@@ -1,3 +1,4 @@
+
 export class Hasp{
 
     id: number;
@@ -5,7 +6,12 @@ export class Hasp{
     clientNames: String[];
     environments: String[];
     features: String[];
-    subFeatures: String[]; 
+    subFeatures: String[];
+    featuresHasp = new Map();
+    subfeaturesActives = new Map();
+    subFeaturesHasp = new Map();
+    versionHasp: Number[] = [0,0,0];
+    
 
     constructor(){
 
@@ -21,7 +27,28 @@ export class Hasp{
 
         this.subFeatures = ["F_MOTIONPLATFORM","F_STEREOSCOPIC","F_MULTIDISPLAY","F_USERSDATABASE","F_EVALUATION","F_TRACKER","F_REMOTEINSTRUCTOR","F_DEBRIEFING",
                             "F_REMOTEDATABASE","F_HIDCONTROLS","F_EXERCICEEDITOR","F_COLLABORATIVE","F_SENDINFOLSYM","F_OCULUS","F_THEORY", "F_NOTIMESYNC",
-                            "F_SIMOCRANE"]; 
+                            "F_SIMOCRANE"];
+
+    }
+
+    //Simulamos la lectura aleatoria de una feature del Hasp y generamos una versión ficticia
+    //Los números de versión en el Hasp van de 1 a 127
+    readFeatureHasp():void{
+        var featureIndex = Math.floor(Math.random() * this.features.length);
+        for (let i=0;i<3;i++){
+            var number = Math.floor(Math.random() * 127);
+            this.versionHasp[i] = number;
+        }
+        this.featuresHasp.set(this.features[featureIndex], this.versionHasp);
+    }
+
+    //Simulamos las subfeatures activas mediante un booleano generado de manera aleatoria
+    getSubfeaturesActive():void{
+        const randomBoolean = Math.random() >= 0.5;
+        for (let i=0;i< this.subFeatures.length; i++){
+            const randomBoolean = Math.random() >= 0.5;
+            this.subfeaturesActives.set(this.subFeatures[i], randomBoolean);
+        }
     }
 
     getClientName():String{

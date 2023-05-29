@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientName = this.hasp.getClientName();
+
   }
 
   changeLanguage(lang:string){
