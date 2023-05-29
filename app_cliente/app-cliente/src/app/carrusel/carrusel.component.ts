@@ -4,6 +4,7 @@ import{ Router} from '@angular/router'
 import { EntidadService} from '../services/entidad.service'
 import { Entidad } from '../compartido/entidad';
 import { MiServicioService } from '../services/mi-servicio.service';
+import { Hasp } from '../compartido/hasp';
 
 @Component({
   selector: 'app-carrusel',
@@ -14,12 +15,16 @@ import { MiServicioService } from '../services/mi-servicio.service';
 
 export class CarruselComponent {
 
+  ngOnInit(): void {
+   
+  }
+
 
   @Injectable({
     providedIn: 'root'
   })
 
-
+ 
   imageObject = [
     {
       thumbImage: 'assets/img/slider/ech_tfm.jpg',
