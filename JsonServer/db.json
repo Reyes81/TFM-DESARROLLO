@@ -4,49 +4,57 @@
       "id": 1,
       "name": "Simulador de ECH",
       "environment": "Harbour",
-      "image": "assets/img/slider/ech_tfm.jpg"
+      "image": "assets/img/slider/ech_tfm.jpg",
+	  "feature":"F_ECH"
     },
     {
       "id": 2,
       "name": "Simulador de Heavy Forklift",
       "environment": "Harbour",
-      "image": "assets/img/slider/heavy_forklift_tfm.jpg"
+      "image": "assets/img/slider/heavy_forklift_tfm.jpg",
+	  "feature": "F_HEAVYFORKLIFT"
     },
     {
       "id": 3,
       "name": "Simulador de MHC",
       "environment": "Harbour",
-      "image": "assets/img/slider/mhc_tfm.jpg"
+      "image": "assets/img/slider/mhc_tfm.jpg",
+	  "feature": "F_MOVIL"
     },
     {
       "id": 4,
       "name": "Simulador de Reach-Stacker",
       "environment": "Harbour",
-      "image": "assets/img/slider/reach_tfm.jpg"
+      "image": "assets/img/slider/reach_tfm.jpg",
+	  "feature": "F_REACHSTACKER"
     },
     {
       "id": 5,
       "name": "Simulador de RMG",
       "environment": "Harbour",
-      "image": "assets/img/slider/rmg_tfm.jpg"
+      "image": "assets/img/slider/rmg_tfm.jpg",
+	  "feature": "F_RMG"
     },
     {
       "id": 6,
       "name": "Simulador de RoRo",
       "environment": "Harbour",
-      "image": "assets/img/slider/roro_tfm.jpg"
+      "image": "assets/img/slider/roro_tfm.jpg",
+	  "feature": "F_RORO"
     },
     {
       "id": 7,
       "name": "Simulador de RTG",
       "environment": "Harbour",
-      "image": "assets/img/slider/rtg_tfm.jpg"
+      "image": "assets/img/slider/rtg_tfm.jpg",
+	  "feature": "F_TRASTAINER"
     },
     {
       "id": 8,
       "name": "Simulador de STS",
       "environment": "Harbour",
-      "image": "assets/img/slider/sts_tfm.jpg"
+      "image": "assets/img/slider/sts_tfm.jpg",
+	  "feature":"F_PORTICO"
     }
   ],
   

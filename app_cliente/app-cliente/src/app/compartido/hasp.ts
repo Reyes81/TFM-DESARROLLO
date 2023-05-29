@@ -39,7 +39,8 @@ export class Hasp{
             var number = Math.floor(Math.random() * 127);
             this.versionHasp[i] = number;
         }
-        this.featuresHasp.set(this.features[featureIndex], this.versionHasp);
+        this.featuresHasp.set("name",this.features[featureIndex]);
+        this.featuresHasp.set("version",this.versionHasp);
     }
 
     //Simulamos las subfeatures activas mediante un booleano generado de manera aleatoria
@@ -47,20 +48,39 @@ export class Hasp{
         const randomBoolean = Math.random() >= 0.5;
         for (let i=0;i< this.subFeatures.length; i++){
             const randomBoolean = Math.random() >= 0.5;
-            this.subfeaturesActives.set(this.subFeatures[i], randomBoolean);
+            this.subfeaturesActives.set(this.subFeatures[i],randomBoolean);
         }
     }
 
-    getClientName():String{
-
-        var index = Math.floor(Math.random() * this.clientNames.length)
-        this.clientname = this.clientNames[index];
-        return this.clientname
+    //Consulta de una feature: Si tiene licencia devuelve la versión de la feature y en caso contrario [-1,-1,-1]
+    getFeature(featureName:String): Number[]{
+        
+        this.readFeatureHasp();
+        var versionFeature:Number[];
+        var name = this.featuresHasp.get("name");
+        alert(name);
+        
+        if(featureName == name){
+            versionFeature = this.featuresHasp.get("version");
+            alert("Versión: " + versionFeature[0]+"."+versionFeature[1]+"."+versionFeature[2]);
+        }   
+        else
+        {
+            alert("No tiene licencia para la feature: " + featureName);
+            versionFeature = [-1,-1,-1];
+        }
+        
+        return versionFeature;
     }
 
-    getFeatureName(): String{
+    //Consulta de una subfeature: Devuelve true si está activa o false en caso contrario
+    getSubFeature(subFeatureName:String):Boolean{
 
-        return "";
+        this.getSubfeaturesActive();
+        var state =this.subfeaturesActives.get(subFeatureName);
+        //alert(subFeatureName + ": " + state);
+
+        return state;
     }
 
     getFeatureIndex(featureName:String):number{
@@ -74,5 +94,12 @@ export class Hasp{
             }
         }
         return index;
+    }
+
+    getClientName():String{
+
+        var index = Math.floor(Math.random() * this.clientNames.length)
+        this.clientname = this.clientNames[index];
+        return this.clientname
     }
 }

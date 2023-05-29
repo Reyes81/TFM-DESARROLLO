@@ -20,7 +20,7 @@ export class InicioComponent {
   ngOnInit(): void {
 
     this.isHasp = this.haspService.getStateHasp()  
-    this.hasp.getSubfeaturesActive();
+    this.hasp.getSubFeature("F_EXERCICEEDITOR");
   }
 
 }
