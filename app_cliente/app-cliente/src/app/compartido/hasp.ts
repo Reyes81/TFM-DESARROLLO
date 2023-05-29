@@ -52,7 +52,7 @@ export class Hasp{
             var feature = new Feature(this.featuresHasp.get("name"),this.featuresHasp.get("version"));
             this.featuresActives.push(feature);
         }
-        alert(this.featuresActives.length);
+        alert(this.featuresActives[0].version);
     }
 
     removeFeatures():void{
