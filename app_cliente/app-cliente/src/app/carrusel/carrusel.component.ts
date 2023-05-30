@@ -7,6 +7,7 @@ import { MiServicioService } from '../services/mi-servicio.service';
 import { Hasp } from '../compartido/hasp';
 import { Feature } from '../compartido/feature';
 import { ImageObject } from '../compartido/imageObject';
+import { HaspService } from '../hasp.service';
 
 @Component({
   selector: 'app-carrusel',
@@ -25,7 +26,7 @@ export class CarruselComponent {
   entidad:Entidad = new Entidad();
   errorMensaje: string= "";
 
-  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadesService:EntidadService){
+  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadesService:EntidadService,private haspService:HaspService){
     
     
   }
@@ -94,8 +95,8 @@ export class CarruselComponent {
   }
 
   initCarrousel():void{
-    var objectsImage:ImageObject[] = [] 
-    this.features = this.hasp.generateFeatures();
+
+    this.features = this.haspService.getFeatures();
 
     for(let i=0; i<this.entidadesArray.length;i++){
       for(let j=0;j<this.features.length;j++){

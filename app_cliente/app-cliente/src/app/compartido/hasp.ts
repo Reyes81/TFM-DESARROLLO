@@ -1,3 +1,4 @@
+import { HaspService } from "../hasp.service";
 import { EntidadService } from "../services/entidad.service";
 import { Feature } from "./feature";
 
@@ -46,10 +47,15 @@ export class Hasp{
     generateFeatures():Feature[]{
 
       //Crear indice random
-      var index = Math.floor(Math.random() * this.features.length);
+      var index = Math.round(Math.random() * (this.features.length - 3) + 3);
+      var numeros:number[] =[];
 
         for(let i=0; i<index; i++){
-            this.generateFeatureHasp();
+            do{
+                this.featureIndex = Math.floor(Math.random() * this.features.length)
+              }while(numeros.includes(this.featureIndex));
+              numeros.push(this.featureIndex);
+            this.generateFeatureHasp(this.featureIndex);
             var feature = new Feature(this.featuresHasp.get("name"),this.featuresHasp.get("version"));
             this.featuresActives.push(feature);
         }
@@ -68,19 +74,14 @@ export class Hasp{
 
     //Simulamos la lectura aleatoria de una feature del Hasp y generamos una versión ficticia
     //Los números de versión en el Hasp van de 1 a 127
-    generateFeatureHasp():void{
+    generateFeatureHasp(index:number):void{
 
-      do{
-        this.featureIndex = Math.floor(Math.random() * this.features.length)
-      }while(this.featureIndex==this.lastFeatureIndex);
-
-      this.lastFeatureIndex=this.featureIndex;
-
+        alert("Index: " + index);
         for (let i=0;i<3;i++){
             var number = Math.floor(Math.random() * 127);
             this.versionHasp[i] = number;
         }
-        this.featuresHasp.set("name",this.features[this.featureIndex]);
+        this.featuresHasp.set("name",this.features[index]);
         this.featuresHasp.set("version",this.versionHasp);
     }
 

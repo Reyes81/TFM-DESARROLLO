@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Feature } from './compartido/feature';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class HaspService {
 
   state:Boolean;
+  features:Feature[]=[];
   constructor() { 
 
     this.state=false;
@@ -17,5 +19,14 @@ export class HaspService {
 
   getStateHasp():Boolean{
     return this.state;
+  }
+
+  setFeatures(features:Feature[]){
+    this.features = features;
+  }
+
+  getFeatures():Feature[]{
+
+    return this.features;
   }
 }
