@@ -49,13 +49,14 @@
       "image": "assets/img/slider/rtg_tfm.jpg",
 	  "feature": "F_TRASTAINER"
     },
-    {
+	{
       "id": 8,
       "name": "Simulador de STS",
       "environment": "Harbour",
       "image": "assets/img/slider/sts_tfm.jpg",
 	  "feature":"F_PORTICO"
     }
+    
   ],
   
   "noticias":[

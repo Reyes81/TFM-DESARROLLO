@@ -5,6 +5,8 @@ import { EntidadService} from '../services/entidad.service'
 import { Entidad } from '../compartido/entidad';
 import { MiServicioService } from '../services/mi-servicio.service';
 import { Hasp } from '../compartido/hasp';
+import { Feature } from '../compartido/feature';
+import { ImageObject } from '../compartido/imageObject';
 
 @Component({
   selector: 'app-carrusel',
@@ -15,16 +17,30 @@ import { Hasp } from '../compartido/hasp';
 
 export class CarruselComponent {
 
-  ngOnInit(): void {
-   
+  features:Feature[] = [];
+  entidadesActive:Entidad[] = [];
+  entidadesArray:Entidad[] = [];
+  hasp:Hasp = new Hasp();
+  entidadesSel: Entidad[] = [];
+  entidad:Entidad = new Entidad();
+  errorMensaje: string= "";
+
+  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadesService:EntidadService){
+    
+    
   }
 
+  ngOnInit():void{
+    this.loadEntities();
+  }
+   
 
   @Injectable({
     providedIn: 'root'
   })
 
- 
+  imageObject:any=[];
+  /*
   imageObject = [
     {
       thumbImage: 'assets/img/slider/ech_tfm.jpg',
@@ -61,21 +77,46 @@ export class CarruselComponent {
       title: 'Simulador de STS'
     }
     ];
+*/
 
-    entidadesSel: Entidad[] = [];
-    entidadesArray: Entidad[] = [];
-    entidad:Entidad = new Entidad();
-    errorMensaje: string= "";
+ async loadEntities(){
 
-  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadesService:EntidadService, private miServicio:EntidadService){
-    this.entidadesService.getEntidades().subscribe(entidades => this.entidadesArray= entidades,  errorMensaje=> this.errorMensaje= <any>errorMensaje);
-    var index = Math.floor(Math.random() * this.entidadesArray.length);
+    try {
+      const entidades = await this.entidadesService.getEntidades().toPromise();
+      this.entidadesArray = entidades;
+      console.log('Subscription complete:', entidades);
+      // Continuar con las acciones posteriores al subscribe
+      this.initCarrousel();
+    } catch (error) {
+      this.errorMensaje = "error";
+      console.error('Error during subscription:', error);
+    }
+  }
+
+  initCarrousel():void{
+    var objectsImage:ImageObject[] = [] 
+    this.features = this.hasp.generateFeatures();
+
+    for(let i=0; i<this.entidadesArray.length;i++){
+      for(let j=0;j<this.features.length;j++){
+        if(this.entidadesArray[i].feature == this.features[j].name){
+          this.entidadesActive.push(this.entidadesArray[i]);
+        }
+      }
+    }
+
+    for(let j=0; j<this.entidadesActive.length;j++){
+      var object = {
+        thumbImage: this.entidadesActive[j].image,
+        title: this.entidadesActive[j].name
+      };
+      this.imageObject.push(object);
+    }
+    
   }
   
-
-
   imageClickHandler(event:number){
-    alert(this.entidadesArray.length);
+    alert("Número de entidades: " + this.entidadesArray.length);
     for(let i=0; i<this.entidadesArray.length; i++){
       if(this.entidadesArray[i].name == this.imageObject[event].title)
         {
@@ -86,9 +127,10 @@ export class CarruselComponent {
 
     if(this.entidad!=null)
     {
-      this.miServicio.setEntidad(this.entidad);
+      this.entidadesService.setEntidad(this.entidad);
     }
     this.router.navigate(["/detalle-licencia"]);
+  
 
   }
   }
