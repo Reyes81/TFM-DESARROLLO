@@ -26,7 +26,7 @@ export class Hasp{
         this.lastFeatureIndex = -1;
         this.featureIndex = -1;
         this.clientname="";
-        this.clientNames = ["CEDUC", "SEVASA", "FLC", "PSC"];
+        this.clientNames = ["CEDUC", "SEVASA", "FLC","PSC", "ARCELLOR"];
 
         this.environments = ["Harbour", "Quarry", "Mine", "Warehouse"];
 
@@ -76,7 +76,6 @@ export class Hasp{
     //Los números de versión en el Hasp van de 1 a 127
     generateFeatureHasp(index:number):void{
 
-        alert("Index: " + index);
         for (let i=0;i<3;i++){
             var number = Math.floor(Math.random() * 127);
             this.versionHasp[i] = number;
@@ -99,7 +98,6 @@ export class Hasp{
 
         var versionFeature:Number[];
         var name = this.featuresHasp.get("name");
-        alert(name);
 
         if(featureName == name){
             versionFeature = this.featuresHasp.get("version");
@@ -138,9 +136,12 @@ export class Hasp{
     }
 
     getClientName():String{
-
         var index = Math.floor(Math.random() * this.clientNames.length)
         this.clientname = this.clientNames[index];
         return this.clientname
+    }
+
+    removeClientName():void{
+        this.clientname = "";
     }
 }
