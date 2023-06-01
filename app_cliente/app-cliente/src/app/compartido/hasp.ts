@@ -42,7 +42,7 @@ export class Hasp{
                             "F_SIMOCRANE"];
         
     }
-
+/*
     //Crea un array de features
     generateFeatures():Feature[]{
 
@@ -143,5 +143,5 @@ export class Hasp{
 
     removeClientName():void{
         this.clientname = "";
-    }
+    }*/
 }

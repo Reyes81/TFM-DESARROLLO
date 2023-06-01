@@ -5,12 +5,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { Hasp } from '../compartido/hasp';
 import { HaspService } from '../hasp.service';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
 
   hasp = new Hasp();
@@ -28,7 +28,8 @@ export class HeaderComponent implements OnInit {
   lang:string='es';
 
   constructor(@Inject('baseURL') public BaseURL:string, private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
-  private haspService:HaspService) {
+ private haspService:HaspService) {
+
     this.translateService.setDefaultLang(this.lang);
     this.clientName="";
 
@@ -48,13 +49,14 @@ export class HeaderComponent implements OnInit {
     this.haspService.setStateHasp(this.isChecked);
 
     if(this.isChecked==true){
-        this.clientName = this.hasp.getClientName();
-        this.haspService.setFeatures(this.hasp.generateFeatures());
+        this.clientName = this.haspService.getClientName();
+        this.haspService.generateFeatures();
+        this.haspService.generateSubfeatures();
     }
     
     else{
-        this.hasp.removeFeatures();
-        this.hasp.removeClientName();
+        this.haspService.removeFeatures();
+        this.haspService.removeClientName();
     }
       
       

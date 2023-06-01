@@ -5,6 +5,9 @@ import { Entidad } from '../compartido/entidad';
 import { faCircleCheck, faCircleXmark} from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 import { EntidadService } from '../services/entidad.service';
+import { HaspService } from '../hasp.service';
+import { Feature } from '../compartido/feature';
+import { SubFeature } from '../compartido/subFeature';
 //const hasp = require('./hasp.node');
 
 @Component({
@@ -21,16 +24,29 @@ export class DetalleLicenciaComponent {
 
   title:String='';
   entidad:Entidad = new Entidad();
+  feature:Feature = new Feature("",[-1,-1,-1]);
+  subFeaturesActive:SubFeature[] = [];
+  featureName:String;
+  featureVersion:number[];
+  featureVersionString:String;
 
-  constructor( private miServicio:EntidadService,private translateService: TranslateService, private changeTranslateService:ChangeTranslateService){
+  constructor( private miServicio:EntidadService,private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
 
     this.translateService.setDefaultLang(this.selectedLanguage);
     this.translateService.use(this.changeTranslateService.getLanguage());
+    this.featureName ="";
+    this.featureVersion = [-1,-1,-1];
+    this.featureVersionString = "";
 
   }
 
   ngOnInit(): void {
     this.entidad = this.miServicio.getEntidad2();
+    this.feature = this.haspService.getFeature(this.entidad.feature);
+    this.featureName = this.feature.name;
+    this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
+    this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
+    this.subFeaturesActive = this.haspService.getSubfeatures();
     this.title = this.entidad.name;
   }
 }

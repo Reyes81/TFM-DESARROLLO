@@ -1,9 +1,9 @@
 export class Feature{
 
   name:String;
-  version:Number[];
+  version:number[];
 
-  constructor(name:String, version:Number[]){
+  constructor(name:String, version:number[]){
     this.name = name;
     this.version = version;
   }
