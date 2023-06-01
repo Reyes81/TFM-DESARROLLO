@@ -26,9 +26,11 @@ export class DetalleLicenciaComponent {
   entidad:Entidad = new Entidad();
   feature:Feature = new Feature("",[-1,-1,-1]);
   subFeaturesActive:SubFeature[] = [];
+  subFeatures:String[] = [];
   featureName:String;
   featureVersion:number[];
   featureVersionString:String;
+  states:Boolean[]=[];
 
   constructor( private miServicio:EntidadService,private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
 
@@ -46,8 +48,19 @@ export class DetalleLicenciaComponent {
     this.featureName = this.feature.name;
     this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
     this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
-    this.subFeaturesActive = this.haspService.getSubfeatures();
+    this.subFeaturesActive = this.haspService.getSubFeaturesState();
+    this.subFeatures = this.haspService.getSubFeatures();
     this.title = this.entidad.name;
+    this.getSubFeatureState();
+  }
+
+  getSubFeatureState():void{
+      for(let i=0; i<this.subFeaturesActive.length; i++)
+      {
+        this.states.push(this.subFeaturesActive[i].state);
+      }
+
+
   }
 }
 

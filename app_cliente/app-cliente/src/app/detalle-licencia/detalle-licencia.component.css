@@ -32,3 +32,12 @@ background-image: url("../../assets/images/background_col.png");
 background-size: contain;
 }
 
+ul{
+  margin:0px;
+  padding:0px;
+  }
+.ul2{
+  margin-left: 25px;
+  margin-bottom: 0px;
+  padding:0px;
+}

@@ -17,12 +17,30 @@
           <ul>
              <li>Feature: {{featureName}}</li>
              <li>Version: {{featureVersionString}}</li>
-             <li>Plafaforma de Movimiento &nbsp; &nbsp; <i><fa-icon [icon]="faCheck" style="font-size:20px;margin-top: 5%;color:greenyellow"></fa-icon></i></li>
-             <li>Vision 3D &nbsp; &nbsp;<i><fa-icon [icon]="faClose" style="font-size:20px;margin-top: 5%;color:red"></fa-icon></i></li>
-             <li>Multiple Displays &nbsp; &nbsp; <i><fa-icon [icon]="faCheck" style="font-size:20px;margin-top: 5%;color:greenyellow"></fa-icon></i></li>
-             <li>Bases Datos Usuarios &nbsp; &nbsp; <i><fa-icon [icon]="faCheck" style="font-size:20px;margin-top: 5%;color:greenyellow"></fa-icon></i></li>
+             <hr>
           </ul>
        </div>
+       <div class="col" style="margin-bottom: 35px;">
+        <div class="row">
+          <div class="lista">
+            <p>Subfeatures</p>
+            <hr>
+            <tr>
+            <td>
+            <ul *ngFor="let item of subFeatures">
+               <li>{{item}}: </li>
+            </ul>
+            </td>
+            <td>
+                <tr class="ul2" *ngFor="let state of states">
+                    <p *ngIf="state; stateNo">YES</p>
+                    <ng-template #stateNo>
+                      
+                    </ng-template>
+                </tr>
+            </td>
+            </tr>
+         </div>
     </div>
     </div>
      </div>

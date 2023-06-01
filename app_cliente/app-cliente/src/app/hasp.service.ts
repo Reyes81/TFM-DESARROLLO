@@ -100,8 +100,12 @@ export class HaspService {
       }
   }
 
-  getSubfeatures():SubFeature[]{
+  getSubFeaturesState():SubFeature[]{
     return this.subfeaturesState;
+  }
+
+  getSubFeatures():String[]{
+    return this.subFeatures;
   }
 
   getFeature(featureName:String):Feature{

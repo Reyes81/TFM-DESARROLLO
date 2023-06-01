@@ -117,7 +117,7 @@ export class CarruselComponent {
   }
   
   imageClickHandler(event:number){
-    alert("Número de entidades: " + this.entidadesArray.length);
+  
     for(let i=0; i<this.entidadesArray.length; i++){
       if(this.entidadesArray[i].name == this.imageObject[event].title)
         {
