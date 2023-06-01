@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './noticias.component.html',
   styleUrls: ['./noticias.component.css']
 })
+
 export class NoticiasComponent {
   isChecked:any=false;
 

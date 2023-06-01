@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { HaspService } from '../hasp.service';
-import { Hasp } from '../compartido/hasp';
+import { HaspService } from '../services/hasp.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -9,8 +9,6 @@ import { Hasp } from '../compartido/hasp';
 })
 
 export class InicioComponent {
-
-  hasp:Hasp = new Hasp();
 
   @Input() isHasp:Boolean;
   constructor(private haspService:HaspService) {

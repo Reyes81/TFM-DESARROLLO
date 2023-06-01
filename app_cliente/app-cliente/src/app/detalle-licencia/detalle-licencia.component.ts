@@ -5,7 +5,7 @@ import { Entidad } from '../compartido/entidad';
 import { faCircleCheck, faCircleXmark} from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 import { EntidadService } from '../services/entidad.service';
-import { HaspService } from '../hasp.service';
+import { HaspService } from '../services/hasp.service';
 import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
 //const hasp = require('./hasp.node');

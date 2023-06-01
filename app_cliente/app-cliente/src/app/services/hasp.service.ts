@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Feature } from './compartido/feature';
-import { SubFeature } from './compartido/subFeature';
+import { Feature } from '../compartido/feature';
+import { SubFeature } from '../compartido/subFeature';
 
 @Injectable({
   providedIn: 'root'

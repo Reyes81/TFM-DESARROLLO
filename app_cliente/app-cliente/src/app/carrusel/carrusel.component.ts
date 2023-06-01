@@ -4,10 +4,9 @@ import{ Router} from '@angular/router'
 import { EntidadService} from '../services/entidad.service'
 import { Entidad } from '../compartido/entidad';
 import { MiServicioService } from '../services/mi-servicio.service';
-import { Hasp } from '../compartido/hasp';
 import { Feature } from '../compartido/feature';
 import { ImageObject } from '../compartido/imageObject';
-import { HaspService } from '../hasp.service';
+import { HaspService } from '../services/hasp.service';
 
 @Component({
   selector: 'app-carrusel',
@@ -21,7 +20,6 @@ export class CarruselComponent {
   features:Feature[] = [];
   entidadesActive:Entidad[] = [];
   entidadesArray:Entidad[] = [];
-  hasp:Hasp = new Hasp();
   entidadesSel: Entidad[] = [];
   entidad:Entidad = new Entidad();
   errorMensaje: string= "";

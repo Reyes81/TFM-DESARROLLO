@@ -2,8 +2,7 @@ import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import{ faBars,faHome, faInfo, faList, faAddressCard,faSignInAlt, faNewspaper} from'@fortawesome/free-solid-svg-icons';
 import { ChangeTranslateService } from '../services/change-translate.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Hasp } from '../compartido/hasp';
-import { HaspService } from '../hasp.service';
+import { HaspService } from '../services/hasp.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +12,6 @@ import { HaspService } from '../hasp.service';
 
 export class HeaderComponent implements OnInit {
 
-  hasp = new Hasp();
   faHome = faHome;
   faInfo = faInfo;
   faNewspaper = faNewspaper;
