@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule} from '@angular/material/menu';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 import{ FlexLayoutModule} from'@angular/flex-layout';
 
@@ -71,6 +72,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatSlideToggleModule,
     MatSelectModule,
     MatMenuModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,

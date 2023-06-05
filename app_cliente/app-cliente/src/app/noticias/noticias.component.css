@@ -1,0 +1,52 @@
+.example-card {
+    max-width: 400px;
+    background-color: #f8f9fa;
+  }
+  
+  .example-header-image {
+    background-image:url("/assets/images/logo_esc.png");
+    background-size:cover;
+  }
+
+  .styleCards{
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    box-shadow: 20px;
+    box-shadow: black;
+
+  }
+
+  .title{
+    font-family:helvetica;
+    font-size: large;
+    font-weight: bold;
+    color:#2a66c6;
+  }
+
+  .text{
+    font-weight: bold;
+    font-family:helvetica;
+    font-size: medium;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .image{
+    box-shadow: 10px;
+  }
+
+  .fecha{
+    font-weight: bold;
+    font-family:helvetica;
+    font-size: medium;
+    color:#2a66c6;
+    margin-top: 35px;
+    display: flex;
+    margin-right: 20px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+

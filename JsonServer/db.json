@@ -62,7 +62,17 @@
   "noticias":[
 	{
 		"id": 1,
-		"noticia": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC"
+		"titleES": "Nueva versión del simulador de grúa SPC",
+		"titleEN":" ",
+		"titleFR":" ",
+		"titlePO":" ",
+		"titleIT":" ",
+		"textES": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"textEN": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"textPO": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"textIT": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"image": "assets/images/news/spc_news.jpg"
+		
 	}
   ],
   "consultas": [

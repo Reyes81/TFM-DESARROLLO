@@ -29,6 +29,5 @@ export class Noticia{
       this.textFR = "";
       this.textPO = "";
       this.textIT = "";
-
     }
   }
