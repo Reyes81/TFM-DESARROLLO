@@ -4,8 +4,8 @@ const path = require('path')
 function createWindow () {
 
     appWin = new BrowserWindow({
-        width: 1000,
-        height: 800,
+        width: 1280,
+        height: 900,
         title: "Gestor de Licencias LSyM",
         icon: path.join(`file://${__dirname}/assets/images/icon.ico`),
         resizable: false,
