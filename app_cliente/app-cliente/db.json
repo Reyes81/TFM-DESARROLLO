@@ -56,9 +56,9 @@
       "image": "assets/img/slider/sts_tfm.jpg",
 	  "feature":"F_PORTICO"
     }
-    
+
   ],
-  
+
   "noticias":[
 	{
 		"id": 1,
@@ -72,7 +72,7 @@
 		"textPO": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
 		"textIT": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
 		"image": "assets/images/news/spc_news.jpg"
-		
+
 	}
   ],
   "info":{
@@ -87,6 +87,10 @@
     "text2_PO": "",
     "text2_IT": "",
     "text3_ES": "Con sede en el Instituto de Robótica de la Universidad de Valencia (IRTIC), estamos en el corazón de la innovación. Nuestra principal línea de interés es el desarrollo e integración de sistemas de formación para los operarios, basados en la simulación en tiempo real. Este hecho nos permite ser expertos en simuladores de maquinaria y fabricar un producto realmente puntero.",
+    "text3_EN": "",
+    "text3_FR": "",
+    "text3_PO": "",
+    "text3_IT": "",
     "image": "assets/images/irtic.jpg"
   },
   "consultas": [

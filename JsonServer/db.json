@@ -75,6 +75,25 @@
 		
 	}
   ],
+  
+   "info":{
+    "text1_ES": "LSYM no es sólo una empresa, nuestro equipo es un grupo de investigadores académicos que han dedicado su vida a la investigación en realidad virtual, modelado matemático, plataformas de movimiento y arquitectura informática. Doctores y profesores universitarios de las áreas de Ingeniería Informática, Matemáticas y Física se han unido con el objetivo común de crear el simulador de maquinaria definitivo.",
+    "text1_EN": "",
+    "text1_FR": "",
+    "text1_PO": "",
+    "text1_IT": "",
+    "text2_ES": "Su experiencia docente y sus conocimientos nos han permitido construir una potente herramienta que hace que el aprendizaje y la enseñanza sean mucho más fáciles, agradables y eficaces.",
+    "text2_EN": "",
+    "text2_FR": "",
+    "text2_PO": "",
+    "text2_IT": "",
+    "text3_ES": "Con sede en el Instituto de Robótica de la Universidad de Valencia (IRTIC), estamos en el corazón de la innovación. Nuestra principal línea de interés es el desarrollo e integración de sistemas de formación para los operarios, basados en la simulación en tiempo real. Este hecho nos permite ser expertos en simuladores de maquinaria y fabricar un producto realmente puntero.",
+    "text3_EN": "",
+    "text3_FR": "",
+    "text3_PO": "",
+    "text3_IT": "",
+    "image": "assets/images/irtic.jpg"
+  },
   "consultas": [
     {
       "name": "Amparo",
