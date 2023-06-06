@@ -3,7 +3,7 @@
     <span class="logo"><img src="assets/images/lsym_no_text.png" height=65 width=180></span>
     <a mat-button routerLink="/inicio"><fa-icon [icon]="faHome"></fa-icon> {{ 'HEADER.INICIO' | translate }} </a>
     <a mat-button id="productos" [matMenuTriggerFor]="productos"><fa-icon [icon]="faList"></fa-icon>{{ 'HEADER.PRODUCTOS' | translate }}</a>
-    <a mat-button><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
+    <a mat-button id="sobre-lsym" routerLink="/sobre-lsym"><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
     <a mat-button id="noticias" routerLink="/noticias"><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
     <a mat-button routerLink="/contacto"><fa-icon [icon]="faAddressCard"></fa-icon> {{ 'HEADER.CONTACTO' | translate }} </a>
     <div class="checkbox_"><p style="align-self: center; font-size: medium; font-weight: normal;"> <input type="checkbox" style= "border-top:5px ;" [(ngModel)]="isChecked" (change)="updateInitComponent()">Simular Hasp </p></div>

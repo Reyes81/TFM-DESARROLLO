@@ -1,0 +1,124 @@
+{
+  "entidades": [
+    {
+      "id": 1,
+      "name": "Simulador de ECH",
+      "environment": "Harbour",
+      "image": "assets/img/slider/ech_tfm.jpg",
+	  "feature":"F_ECH"
+    },
+    {
+      "id": 2,
+      "name": "Simulador de Heavy Forklift",
+      "environment": "Harbour",
+      "image": "assets/img/slider/heavy_forklift_tfm.jpg",
+	  "feature": "F_HEAVYFORKLIFT"
+    },
+    {
+      "id": 3,
+      "name": "Simulador de MHC",
+      "environment": "Harbour",
+      "image": "assets/img/slider/mhc_tfm.jpg",
+	  "feature": "F_MOVIL"
+    },
+    {
+      "id": 4,
+      "name": "Simulador de Reach-Stacker",
+      "environment": "Harbour",
+      "image": "assets/img/slider/reach_tfm.jpg",
+	  "feature": "F_REACHSTACKER"
+    },
+    {
+      "id": 5,
+      "name": "Simulador de RMG",
+      "environment": "Harbour",
+      "image": "assets/img/slider/rmg_tfm.jpg",
+	  "feature": "F_RMG"
+    },
+    {
+      "id": 6,
+      "name": "Simulador de RoRo",
+      "environment": "Harbour",
+      "image": "assets/img/slider/roro_tfm.jpg",
+	  "feature": "F_RORO"
+    },
+    {
+      "id": 7,
+      "name": "Simulador de RTG",
+      "environment": "Harbour",
+      "image": "assets/img/slider/rtg_tfm.jpg",
+	  "feature": "F_TRASTAINER"
+    },
+	{
+      "id": 8,
+      "name": "Simulador de STS",
+      "environment": "Harbour",
+      "image": "assets/img/slider/sts_tfm.jpg",
+	  "feature":"F_PORTICO"
+    }
+    
+  ],
+  
+  "noticias":[
+	{
+		"id": 1,
+		"titleES": "Nueva versión del simulador de grúa SPC",
+		"titleEN":" ",
+		"titleFR":" ",
+		"titlePO":" ",
+		"titleIT":" ",
+		"textES": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"textEN": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"textPO": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"textIT": "El grupo LSyM ha lanzado una nueva versión del simulador de grúa SPC",
+		"image": "assets/images/news/spc_news.jpg"
+		
+	}
+  ],
+  "info":{
+    "text1_ES": "LSYM no es sólo una empresa, nuestro equipo es un grupo de investigadores académicos que han dedicado su vida a la investigación en realidad virtual, modelado matemático, plataformas de movimiento y arquitectura informática. Doctores y profesores universitarios de las áreas de Ingeniería Informática, Matemáticas y Física se han unido con el objetivo común de crear el simulador de maquinaria definitivo.",
+    "text1_EN": "",
+    "text1_FR": "",
+    "text1_PO": "",
+    "text1_IT": "",
+    "text2_ES": "Su experiencia docente y sus conocimientos nos han permitido construir una potente herramienta que hace que el aprendizaje y la enseñanza sean mucho más fáciles, agradables y eficaces.",
+    "text2_EN": "",
+    "text2_FR": "",
+    "text2_PO": "",
+    "text2_IT": "",
+    "text3_ES": "Con sede en el Instituto de Robótica de la Universidad de Valencia (IRTIC), estamos en el corazón de la innovación. Nuestra principal línea de interés es el desarrollo e integración de sistemas de formación para los operarios, basados en la simulación en tiempo real. Este hecho nos permite ser expertos en simuladores de maquinaria y fabricar un producto realmente puntero.",
+    "image": "assets/images/irtic.jpg"
+  },
+  "consultas": [
+    {
+      "name": "Amparo",
+      "empresa": "Consum",
+      "telefono": "695307839",
+      "email": "amparo@uv.es",
+      "contactar": true,
+      "tipocontacto": "Email",
+      "mensaje": "Hola soy Amparo",
+      "id": 1
+    },
+    {
+      "name": "Alejandro",
+      "empresa": "lsym",
+      "telefono": "0658466464",
+      "email": "aa@uv.es",
+      "contactar": true,
+      "tipocontacto": "Teléfono",
+      "mensaje": "Hola",
+      "id": 2
+    },
+    {
+      "name": "Alejandro",
+      "empresa": "lsym",
+      "telefono": "06464644",
+      "email": "a@uv.es",
+      "contactar": true,
+      "tipocontacto": "Teléfono",
+      "mensaje": "Hola",
+      "id": 3
+    }
+  ]
+}

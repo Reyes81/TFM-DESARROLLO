@@ -50,3 +50,24 @@
     justify-content: flex-end;
   }
 
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 82%;
+  }
+
+  .text_subtitle{
+    color: #2a66c6;
+  }
+  h2 {
+    font: 25px helvetica;
+    margin-top: 30px;
+    text-align: center;
+  }
+  h2.linea {
+    position: relative;
+    z-index: 1;
+    color: #2a66c6;
+  }

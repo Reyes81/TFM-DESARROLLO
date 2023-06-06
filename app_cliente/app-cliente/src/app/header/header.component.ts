@@ -49,11 +49,11 @@ export class HeaderComponent implements OnInit {
     if(this.isChecked==true){
         this.clientName = this.haspService.getClientName();
         this.haspService.generateFeatures();
-        this.haspService.generateSubfeatures();
     }
     
     else{
         this.haspService.removeFeatures();
+        this.haspService.removeSubFeatures();
         this.haspService.removeClientName();
     }
       

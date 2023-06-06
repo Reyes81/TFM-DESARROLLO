@@ -27,17 +27,11 @@
             <hr>
             <tr>
             <td>
-            <ul *ngFor="let item of subFeatures">
-               <li>{{item}}: </li>
+            <ul  style="font-family:Helvetica; font-size: medium; font-weight: normal; margin-bottom: 5px;" *ngFor="let item of subFeaturesActive">
+               <li>{{item.name}}: <span style="color: green;" *ngIf="item.state; else noSub">Yes</span>
+                <ng-template #noSub><span style="color: red;">No</span></ng-template>
+              </li>
             </ul>
-            </td>
-            <td>
-                <tr class="ul2" *ngFor="let state of states">
-                    <p *ngIf="state; stateNo">YES</p>
-                    <ng-template #stateNo>
-                      
-                    </ng-template>
-                </tr>
             </td>
             </tr>
          </div>

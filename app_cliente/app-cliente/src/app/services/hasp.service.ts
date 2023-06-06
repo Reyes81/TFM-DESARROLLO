@@ -76,6 +76,7 @@ export class HaspService {
     this.featuresActives=[];
   }
 
+
   //Simulamos la lectura aleatoria de una feature del Hasp y generamos una versión ficticia
   //Los números de versión en el Hasp van de 1 a 127
   generateFeatureHasp(index:number):Feature{
@@ -98,6 +99,10 @@ export class HaspService {
           var subFeature = new SubFeature(this.subFeatures[i],randomBoolean);
           this.subfeaturesState.push(subFeature);
       }
+  }
+
+  removeSubFeatures():void{
+    this.subfeaturesState = [];
   }
 
   getSubFeaturesState():SubFeature[]{
