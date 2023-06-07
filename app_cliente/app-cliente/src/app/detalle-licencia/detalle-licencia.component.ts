@@ -48,9 +48,11 @@ export class DetalleLicenciaComponent {
     this.featureName = this.feature.name;
     this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
     this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
-    this.haspService.removeSubFeatures();
-    this.haspService.generateSubfeatures();
     this.subFeaturesActive = this.haspService.getSubFeaturesState();
+    if(this.subFeaturesActive.length == 0){
+      this.haspService.generateSubfeatures();
+      this.subFeaturesActive = this.haspService.getSubFeaturesState();
+    }
     this.title = this.entidad.name;
   }
   }

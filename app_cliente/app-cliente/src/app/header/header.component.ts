@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
   changeLanguage(lang:string){
     this.translateService.use(lang);
     this.chageTranslateService.setLanguage(lang);
+    this.sharedService.updateLanguageValue(lang);
   }
 
   updateInitComponent(): void {

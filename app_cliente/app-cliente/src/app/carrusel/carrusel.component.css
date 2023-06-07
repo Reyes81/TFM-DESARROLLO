@@ -20,16 +20,6 @@ h2.linea:before {
   z-index: -1;
 }
 
-h2 {
-  font: 25px Helvetica;
-  margin-top: 30px;
-  text-align: center;
-}
-h2.linea {
-  position: relative;
-  z-index: 1;
-  color: #2a66c6;
-}
 h2.linea:before {
   border-top: 1px solid #2a66c6;
   content: "";
@@ -69,4 +59,17 @@ position: relative;
 top: 30%;
 transform: translateY(-50%);
 display: block;
+}
+.text_subtitle{
+  font-size: 25px;
+  font-family:  helvetica;
+  margin-top: 30px;
+  text-align: center;
+  color: #2a66c6;
+}
+
+h2.linea {
+  position: relative;
+  z-index: 1;
+  color: #2a66c6;
 }
