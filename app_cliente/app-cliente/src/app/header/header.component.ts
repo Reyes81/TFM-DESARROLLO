@@ -3,6 +3,7 @@ import{ faBars,faHome, faInfo, faList, faAddressCard,faSignInAlt, faNewspaper} f
 import { ChangeTranslateService } from '../services/change-translate.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HaspService } from '../services/hasp.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -21,12 +22,12 @@ export class HeaderComponent implements OnInit {
   faSignInAlt = faSignInAlt;
   clientName:String;
 
-  isChecked:Boolean = false;
+  isChecked:boolean = false;
 
   lang:string='es';
 
   constructor(@Inject('baseURL') public BaseURL:string, private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
- private haspService:HaspService) {
+ private haspService:HaspService, private sharedService:SharedService) {
 
     this.translateService.setDefaultLang(this.lang);
     this.clientName="";
@@ -43,6 +44,8 @@ export class HeaderComponent implements OnInit {
   }
 
   updateInitComponent(): void {
+
+    this.sharedService.updateCheckboxValue(this.isChecked);
 
     this.haspService.setStateHasp(this.isChecked);
 
