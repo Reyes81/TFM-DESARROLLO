@@ -1,5 +1,3 @@
-
-
   <div id="space" class="container">
     <span hidden="true">{{selectedLanguage}}</span>
   <div class="row" style="margin-top: 35px;">
@@ -7,28 +5,24 @@
            <hr>
   </div>
 
-     <div class="row" style="margin-top: 35px;">
-    <div  id="col" class="col">
-      <img id="img" src="{{entidad.image}}">
+     <div class="row" style="margin-top: 35px; width: 100%;" >
+    <div  id="col" class="col" style=" margin-right: 30px; display: flex; align-items: center;">
+      <img id="img" src="{{entidad.image}}" style="width: 80%;  ">
     </div>
 
-    <div class="col" style="margin-bottom: 35px;">
-      <div class="row">
-        <div class="lista">
-          <ul>
-             <li>Feature: {{featureName}}</li>
-             <li>Version: {{featureVersionString}}</li>
-             <hr>
-          </ul>
-       </div>
-       <div class="col" style="margin-bottom: 35px;">
-        <div class="row">
-          <div class="lista">
+       <div class="col" style="margin-bottom: 35px; ">
+        <div class="row"> 
+          <div class="col">      
+            <ul style="font-family:Helvetica; font-size: medium; font-weight: normal; margin-bottom: 5px;">
+               <li>Feature: {{featureName}}</li>
+               <li>Version: {{featureVersionString}}</li>
+               <hr>
+            </ul>
             <p>Subfeatures</p>
             <hr>
             <tr>
             <td>
-            <ul  style="font-family:Helvetica; font-size: medium; font-weight: normal; margin-bottom: 5px;" *ngFor="let item of subFeaturesActive">
+            <ul  style="font-family:Helvetica; font-size: medium; font-weight: normal; margin-bottom: 5px;" *ngFor="let item of subFeatures">
                <li>{{item.name}}: <span style="color: green;" *ngIf="item.state; else noSub">Yes</span>
                 <ng-template #noSub><span style="color: red;">No</span></ng-template>
               </li>
@@ -36,9 +30,14 @@
             </td>
             </tr>
          </div>
-    </div>
-    </div>
+        </div>
+        <div class="col-md-3"></div>
+        <hr>
+      </div> 
+    
+    
      </div>
-  </div>
+    </div>
+    
 
 

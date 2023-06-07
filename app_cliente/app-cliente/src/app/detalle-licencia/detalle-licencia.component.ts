@@ -24,9 +24,8 @@ export class DetalleLicenciaComponent {
 
   title:String='';
   entidad:Entidad = new Entidad();
-  feature:Feature = new Feature("",[-1,-1,-1]);
-  subFeaturesActive:SubFeature[] = [];
-  subFeatures:String[] = [];
+  feature:Feature = new Feature("",[-1,-1,-1],[]);
+  subFeatures:SubFeature[] = [];
   featureName:String;
   featureVersion:number[];
   featureVersionString:String;
@@ -48,11 +47,12 @@ export class DetalleLicenciaComponent {
     this.featureName = this.feature.name;
     this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
     this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
-    this.subFeaturesActive = this.haspService.getSubFeaturesState();
-    if(this.subFeaturesActive.length == 0){
+    this.subFeatures = this.feature.subFeactures;
+    /*
+    if(this.subFeatures.length == 0){
       this.haspService.generateSubfeatures();
-      this.subFeaturesActive = this.haspService.getSubFeaturesState();
-    }
+      this.subFeatures = this.haspService.getSubFeatures();
+    }*/
     this.title = this.entidad.name;
   }
   }

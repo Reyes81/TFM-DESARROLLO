@@ -46,6 +46,12 @@ export class HaspService {
       
   }
 
+  ///////////////////////////////////////////
+  //                                       //
+  //              FEATURES                 //
+  //                                       //
+  ///////////////////////////////////////////
+
   //Crea un array de features
   generateFeatures():Feature[]{
 
@@ -58,7 +64,7 @@ export class HaspService {
               this.featureIndex = Math.floor(Math.random() * this.features.length)
             }while(numeros.includes(this.featureIndex));
 
-            numeros.push(this.featureIndex);
+          numeros.push(this.featureIndex);
           var newFeature = this.generateFeatureHasp(this.featureIndex);
           this.featuresActives.push(newFeature);
       }
@@ -72,50 +78,26 @@ export class HaspService {
       return this.featuresActives;
   }
 
-  removeFeatures():void{
-    this.featuresActives=[];
-  }
-
-
   //Simulamos la lectura aleatoria de una feature del Hasp y generamos una versión ficticia
   //Los números de versión en el Hasp van de 1 a 127
   generateFeatureHasp(index:number):Feature{
     var versionHasp:number[] = [0,0,0];
+
       for (let i=0;i<3;i++){
           var number = Math.floor(Math.random() * 127);
           versionHasp[i] = number;
+          
       }
-      var featureHasp = new Feature(this.features[index],versionHasp);
+      this.generateSubfeatures();
+      var featureHasp = new Feature(this.features[index],versionHasp,this.subfeaturesState);
+      this.subfeaturesState = []
       return featureHasp;
-      //this.featuresHasp.set("name",this.features[index]);
-      //this.featuresHasp.set("version",this.versionHasp);
-  }
-
-  //Simulamos las subfeatures activas mediante un booleano generado de manera aleatoria
-  generateSubfeatures():void{
-      const randomBoolean = Math.random() >= 0.5;
-      for (let i=0;i< this.subFeatures.length; i++){
-          const randomBoolean = Math.random() >= 0.5;
-          var subFeature = new SubFeature(this.subFeatures[i],randomBoolean);
-          this.subfeaturesState.push(subFeature);
-      }
-  }
-
-  removeSubFeatures():void{
-    this.subfeaturesState = [];
-  }
-
-  getSubFeaturesState():SubFeature[]{
-    return this.subfeaturesState;
-  }
-
-  getSubFeatures():String[]{
-    return this.subFeatures;
   }
 
   getFeature(featureName:String):Feature{
     
-    var feature = new Feature("",[0,0,0]);
+  var _subFeatures:SubFeature[] = [];
+    var feature = new Feature("",[0,0,0],_subFeatures);
     for(let i=0; i<this.featuresActives.length; i++) {
       if(this.featuresActives[i].name == featureName)
         feature = this.featuresActives[i];
@@ -123,6 +105,7 @@ export class HaspService {
 
     return feature;
   }
+
   //Consulta de una feature: Si tiene licencia devuelve la versión de la feature y en caso contrario [-1,-1,-1]
   getFeatureVersion(featureName:String): number[]{
 
@@ -138,19 +121,6 @@ export class HaspService {
       return versionFeature;
   }
 
-  //Consulta de una subfeature: Devuelve true si está activa o false en caso contrario
-  getSubFeature(subFeatureName:String):Boolean{
-
-      var state:Boolean = false;
-      for(let i=0;i<this.subfeaturesState.length;i++)
-      {
-        if(this.subfeaturesState[i].name = subFeatureName)
-          state = this.subfeaturesState[i].state;
-      }
-
-      return state;
-  }
-
   getFeatureIndex(featureName:String):number{
 
       var index:number=-1;
@@ -162,6 +132,47 @@ export class HaspService {
           }
       }
       return index;
+  }
+
+  removeFeatures():void{
+    this.featuresActives=[];
+  }
+
+  ///////////////////////////////////////////
+  //                                       //
+  //            SUB-FEATURES               //
+  //                                       //
+  ///////////////////////////////////////////
+
+  //Simulamos las subfeatures activas mediante un booleano generado de manera aleatoria
+  generateSubfeatures():void{
+    const randomBoolean = Math.random() >= 0.5;
+    for (let i=0;i< this.subFeatures.length; i++){
+      const randomBoolean = Math.random() >= 0.5;
+      var subFeature = new SubFeature(this.subFeatures[i],randomBoolean);
+      this.subfeaturesState.push(subFeature);
+    }
+  }
+
+  getSubFeatures():SubFeature[]{
+    return this.subfeaturesState;
+  }
+
+  //Consulta de una subfeature: Devuelve true si está activa o false en caso contrario
+  getSubFeature(subFeatureName:String):Boolean{
+
+    var state:Boolean = false;
+    for(let i=0;i<this.subfeaturesState.length;i++)
+    {
+      if(this.subfeaturesState[i].name = subFeatureName)
+        state = this.subfeaturesState[i].state;
+    }
+
+    return state;
+  }
+
+  removeSubFeatures():void{
+    this.subfeaturesState = [];
   }
 
   getClientName():String{

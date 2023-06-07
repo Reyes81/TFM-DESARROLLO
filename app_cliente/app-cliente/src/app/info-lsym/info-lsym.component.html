@@ -1,3 +1,4 @@
+<div style="height: 100%;">
 <div class="container"
      fxLayout="column"
      fxLayoutGap="10px">
@@ -8,7 +9,8 @@
               <hr>
             </div>
      </div>
-
+</div>
+<div class="content">
      <div class="row">
         <p style="font-size: medium;">{{text1}}</p>
      </div>
@@ -16,13 +18,14 @@
      <div class="row">
       <p style="font-size: medium;">{{text2}}</p>
    </div>
-   <div class="row">
-      <div class="col">
-        <img src="{{info.image}}" width="80%" height="100%">
+   <div class="row" style="margin-top: 30px;">
+      <div class="col-md">
+        <img src="{{info.image}}"  style="justify-content: center; display:flex; align-items: center; width: 80%; height: 100%; margin-left: auto">
       </div>
 
-      <div class="col" style="align-items: center;">
+      <div class="col-md" style="display:flex; align-items: center; justify-content: center;">
         <p style="font-size: medium;">{{text3}}</p>
       </div>
    </div>
+</div>
 </div>
