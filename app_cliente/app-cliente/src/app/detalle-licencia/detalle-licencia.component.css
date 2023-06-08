@@ -41,3 +41,11 @@ ul{
   margin-bottom: 0px;
   padding:0px;
 }
+
+.subfeature {
+  color: #2a66c6;
+  font-size: 15px;
+  font-family: helvetica;
+  margin-top: 30px;
+  text-align:left;
+}

@@ -11,18 +11,18 @@
     </div>
 
        <div class="col" style="margin-bottom: 35px; ">
-        <div class="row"> 
-          <div class="col">      
+        <div class="row">
+          <div class="col">
             <ul style="font-family:Helvetica; font-size: medium; font-weight: normal; margin-bottom: 5px;">
                <li>Feature: {{featureName}}</li>
                <li>Version: {{featureVersionString}}</li>
                <hr>
             </ul>
-            <p>Subfeatures</p>
+            <p class="subfeature">Subfeatures</p>
             <hr>
             <tr>
             <td>
-            <ul  style="font-family:Helvetica; font-size: medium; font-weight: normal; margin-bottom: 5px;" *ngFor="let item of subFeatures">
+            <ul  style="font-family:Helvetica; font-size: small; font-weight: bold; margin-bottom: 2px;" *ngFor="let item of subFeatures">
                <li>{{item.name}}: <span style="color: green;" *ngIf="item.state; else noSub">Yes</span>
                 <ng-template #noSub><span style="color: red;">No</span></ng-template>
               </li>
@@ -33,11 +33,11 @@
         </div>
         <div class="col-md-3"></div>
         <hr>
-      </div> 
-    
-    
+      </div>
+
+
      </div>
     </div>
-    
+
 
 
