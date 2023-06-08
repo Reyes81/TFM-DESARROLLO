@@ -8,6 +8,9 @@ import { EntidadService } from '../services/entidad.service';
 import { HaspService } from '../services/hasp.service';
 import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
+
+//const electron = (<any>window).require('electron');
+//const shell = electron.shell;
 //const hasp = require('./hasp.node');
 
 @Component({
@@ -54,6 +57,11 @@ export class DetalleLicenciaComponent {
       this.subFeatures = this.haspService.getSubFeatures();
     }*/
     this.title = this.entidad.name;
+  }
+
+  openLink() {
+    //const url = 'https://lsymserver.uv.es/mantis/login_page.php'; 
+    //shell.openExternal(url);
   }
   }
 
