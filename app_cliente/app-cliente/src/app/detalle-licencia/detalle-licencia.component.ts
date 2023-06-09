@@ -10,8 +10,8 @@ import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
 import swal from 'sweetalert2';
 
-//cdconst electron = (<any>window).require('electron');
-//const shell = electron.shell;
+const electron = (<any>window).require('electron');
+const shell = electron.shell;
 
 @Component({
   selector: 'app-detalle-licencia',
@@ -33,6 +33,7 @@ export class DetalleLicenciaComponent {
   featureVersion:number[];
   featureVersionString:String;
   states:Boolean[]=[];
+  clientName:String;
 
   constructor( private miServicio:EntidadService,private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
 
@@ -41,6 +42,7 @@ export class DetalleLicenciaComponent {
     this.featureName ="";
     this.featureVersion = [-1,-1,-1];
     this.featureVersionString = "";
+    this.clientName = "";
 
   }
 
@@ -57,11 +59,14 @@ export class DetalleLicenciaComponent {
       this.subFeatures = this.haspService.getSubFeatures();
     }*/
     this.title = this.entidad.name;
+    this.clientName = this.haspService.getClientName();
+    
   }
 
   openLink() {
-    //const url = 'https://lsymserver.uv.es/mantis/login_page.php'; 
-    //shell.openExternal(url);
+    const url = 'https://lsymserver.uv.es/mantis/login_page.php?username=' + this.clientName; 
+    alert(url);
+    shell.openExternal(url);
   }
 
   install():void{
