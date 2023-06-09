@@ -51,7 +51,7 @@ export class DetalleLicenciaComponent {
     this.feature = this.haspService.getFeature(this.entidad.feature);
     this.featureName = this.feature.name;
     this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
-    this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
+    this.featureVersionString = "v."+ this.featureVersion[0] + "." + this.featureVersion[1] + "." + this.featureVersion[2];
     this.subFeatures = this.feature.subFeactures;
     /*
     if(this.subFeatures.length == 0){
