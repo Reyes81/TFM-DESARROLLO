@@ -8,10 +8,10 @@ import { EntidadService } from '../services/entidad.service';
 import { HaspService } from '../services/hasp.service';
 import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
+import swal from 'sweetalert2';
 
-//const electron = (<any>window).require('electron');
+//cdconst electron = (<any>window).require('electron');
 //const shell = electron.shell;
-//const hasp = require('./hasp.node');
 
 @Component({
   selector: 'app-detalle-licencia',
@@ -62,6 +62,14 @@ export class DetalleLicenciaComponent {
   openLink() {
     //const url = 'https://lsymserver.uv.es/mantis/login_page.php'; 
     //shell.openExternal(url);
+  }
+
+  install():void{
+    swal.fire('En desarrollo', 'Instalar archivo en local', 'success');
+  }
+
+  uninstall():void{
+    swal.fire('En desarrollo', 'Desinstalar archivo en local', 'success');
   }
   }
 

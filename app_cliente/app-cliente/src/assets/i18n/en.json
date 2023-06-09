@@ -1,6 +1,10 @@
 {
   "DETALLE": {
-      "LICENCIA": "License"
+      "LICENCIA": "License",
+      "ACTIVAS": "Active Licenses",
+      "INCIDENCIAS": "Incident Report",
+      "CAMBIOS": "Change Log",
+      "VERSION": "Version"
   },
   "HEADER": {
     "PRODUCTOS": "Products",

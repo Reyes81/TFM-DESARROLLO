@@ -1,6 +1,10 @@
 {
   "DETALLE": {
-      "LICENCIA": "Licença"
+      "LICENCIA": "Licença",
+      "ACTIVAS": "Licenças Ativas",
+      "INCIDENCIAS": "Relatório de incidente",
+      "CAMBIOS": "Registo de alterações",
+      "VERSION": "Versão"
   },
   "HEADER": {
     "PRODUCTOS": "Produtos",
