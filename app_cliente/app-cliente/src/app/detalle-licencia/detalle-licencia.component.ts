@@ -12,6 +12,7 @@ import swal from 'sweetalert2';
 
 const electron = (<any>window).require('electron');
 const shell = electron.shell;
+//const hasp = require('./hasp.node');
 
 @Component({
   selector: 'app-detalle-licencia',
@@ -33,7 +34,6 @@ export class DetalleLicenciaComponent {
   featureVersion:number[];
   featureVersionString:String;
   states:Boolean[]=[];
-  clientName:String;
 
   constructor( private miServicio:EntidadService,private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
 
@@ -42,7 +42,6 @@ export class DetalleLicenciaComponent {
     this.featureName ="";
     this.featureVersion = [-1,-1,-1];
     this.featureVersionString = "";
-    this.clientName = "";
 
   }
 
@@ -51,7 +50,7 @@ export class DetalleLicenciaComponent {
     this.feature = this.haspService.getFeature(this.entidad.feature);
     this.featureName = this.feature.name;
     this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
-    this.featureVersionString = "v."+ this.featureVersion[0] + "." + this.featureVersion[1] + "." + this.featureVersion[2];
+    this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
     this.subFeatures = this.feature.subFeactures;
     /*
     if(this.subFeatures.length == 0){
@@ -59,22 +58,19 @@ export class DetalleLicenciaComponent {
       this.subFeatures = this.haspService.getSubFeatures();
     }*/
     this.title = this.entidad.name;
-    this.clientName = this.haspService.getClientName();
-    
   }
 
   openLink() {
-    const url = 'https://lsymserver.uv.es/mantis/login_page.php?username=' + this.clientName; 
-    alert(url);
+    const url = 'https://lsymserver.uv.es/mantis/login_page.php';
     shell.openExternal(url);
   }
 
-  install():void{
-    swal.fire('En desarrollo', 'Instalar archivo en local', 'success');
+  install(): void{
+    swal.fire('En desarrollo', 'Instalará la nueva actualización', 'success');
   }
 
-  uninstall():void{
-    swal.fire('En desarrollo', 'Desinstalar archivo en local', 'success');
+  uninstall(): void{
+    swal.fire('En desarrollo', 'Desinstalará la actualización actual', 'success');
   }
   }
 

@@ -16,21 +16,21 @@
         <div class="row">
 
           <div class="col" style="margin-bottom: auto;">
-            
+
             <p class="subfeature">Feature</p>
             <hr>
             <ul style="font-family:Helvetica; font-size: small; font-weight: bold; margin-bottom: 5px;">
                <li>Feature: {{featureName}}</li>
                <li>{{ 'DETALLE.VERSION' | translate }}: {{featureVersionString}}</li>
-               
+
             </ul>
 
 
             <div class="row" style="display: flex; justify-content: left;">
-              <div class="col-md-2" style="margin-left: 5px; margin-right: 5px;">
+              <div class="col-md-2" style="margin-left: 10px; margin-right: 10px;">
                     <button type="button"  (click)="install()" class="btn btn-sm btn-primary">Instalar</button>
               </div>
-              <div class="col-md-2"  style="margin-left: 5px; margin-right: 5px;">
+              <div class="col-md-2"  style="margin-left: 10px; margin-right:10px;">
                 <button type="button" (click)="uninstall()" class="btn btn-sm btn-primary">Desinstalar</button>
           </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="col">
             <p class="subfeature">Subfeatures</p>
             <hr>
-        
+
             <ul  style="font-family:Helvetica; font-size: small; font-weight: bold; margin-bottom: 1px;" *ngFor="let item of subFeatures">
                <li>{{item.name}}: <span style="color: green;" *ngIf="item.state; else noSub">Yes</span>
                 <ng-template #noSub><span style="color: red;">No</span></ng-template>
@@ -73,7 +73,7 @@
             <div class="col">
             <p class="subfeature">{{ 'DETALLE.CAMBIOS' | translate }}</p>
             <hr>
-        
+
          </div>
         </div>
         <div class="row" style="margin-top: 10px; width: 100%; display:flex;justify-content: flex-end" >
@@ -81,9 +81,9 @@
         </div>
         </div>
        </div>
-       
+
       </div>
-      
+
 </div>
 
 
