@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
+import { baseURL_SERVER } from '../compartido/baseurl';
+import  {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +13,8 @@ import { SubFeature } from '../compartido/subFeature';
 export class HaspService {
 
   id: number;
-  clientname: String;
-  clientNames: String[];
+  clientname: string;
+  clientNames: string[];
   environments: String[];
   features: String[];
   featuresAll: String[];
@@ -23,13 +28,13 @@ export class HaspService {
 
 
 
-  constructor(){
+  constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService){
 
       this.id=-1;
       this.lastFeatureIndex = -1;
       this.featureIndex = -1;
       this.clientname="";
-      this.clientNames = ["CEDUC", "SEVASA", "FLC","PSC", "ARCELLOR"];
+      this.clientNames = [];
 
       this.environments = ["Harbour", "Quarry", "Mine", "Warehouse"];
 
@@ -43,7 +48,7 @@ export class HaspService {
       this.subFeatures = ["F_MOTIONPLATFORM","F_STEREOSCOPIC","F_MULTIDISPLAY","F_USERSDATABASE","F_EVALUATION","F_TRACKER","F_REMOTEINSTRUCTOR","F_DEBRIEFING",
                           "F_REMOTEDATABASE","F_HIDCONTROLS","F_EXERCICEEDITOR","F_COLLABORATIVE","F_SENDINFOLSYM","F_OCULUS","F_THEORY", "F_NOTIMESYNC",
                           "F_SIMOCRANE"];
-      
+
   }
 
   ///////////////////////////////////////////
@@ -59,7 +64,7 @@ export class HaspService {
     var index = Math.round(Math.random() * (this.features.length - 3) + 3);
     var numeros:number[] =[];
       for(let i=0; i<index; i++){
-        
+
           do{
               this.featureIndex = Math.floor(Math.random() * this.features.length)
             }while(numeros.includes(this.featureIndex));
@@ -86,7 +91,7 @@ export class HaspService {
       for (let i=0;i<3;i++){
           var number = Math.floor(Math.random() * 127);
           versionHasp[i] = number;
-          
+
       }
       this.generateSubfeatures();
       var featureHasp = new Feature(this.features[index],versionHasp,this.subfeaturesState);
@@ -95,7 +100,7 @@ export class HaspService {
   }
 
   getFeature(featureName:String):Feature{
-    
+
   var _subFeatures:SubFeature[] = [];
     var feature = new Feature("",[0,0,0],_subFeatures);
     for(let i=0; i<this.featuresActives.length; i++) {
@@ -115,7 +120,7 @@ export class HaspService {
         if(featureName == this.featuresActives[i].name){
           versionFeature = this.featuresActives[i].version;
       }
-     
+
       }
 
       return versionFeature;
@@ -175,10 +180,17 @@ export class HaspService {
     this.subfeaturesState = [];
   }
 
-  getClientName():String{
-      var index = Math.floor(Math.random() * this.clientNames.length)
-      this.clientname = this.clientNames[index];
-      return this.clientname
+  getClientName():string{
+    this.http.get<string[]>(baseURL_SERVER + '/clientsNames').pipe(catchError(error => {
+      console.error('Error al obtener los nombres de los clientes:', error);
+      return [];})).subscribe(
+        (data: string[]) => {
+          this.clientNames = data;
+        }
+      );
+    var index = Math.floor(Math.random() * this.clientNames.length)
+    this.clientname = this.clientNames[index];
+    return this.clientname
   }
 
   removeClientName():void{
