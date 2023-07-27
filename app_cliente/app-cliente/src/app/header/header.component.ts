@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   faBars= faBars;
   faSignInAlt = faSignInAlt;
   clientName:String;
-
+  nombresClientes: string[] = [];
   isChecked:boolean = false;
 
   lang:string='es';
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   changeLanguage(lang:string){
@@ -51,17 +51,27 @@ export class HeaderComponent implements OnInit {
     this.haspService.setStateHasp(this.isChecked);
 
     if(this.isChecked==true){
-        this.clientName = this.haspService.getClientName();
+        //this.clientName = this.haspService.getClientName();
+        this.haspService.getClientsNames().subscribe(
+          (data: any[]) => {
+            this.nombresClientes = data;
+          },
+          (error) => {
+            console.error('Error al obtener los nombres de los clientes:', error);
+          }
+        );
+
+        alert(this.nombresClientes);
         this.haspService.generateFeatures();
     }
-    
+
     else{
         this.haspService.removeFeatures();
         this.haspService.removeSubFeatures();
         this.haspService.removeClientName();
     }
-      
-      
+
+
   }
 
   gotoNews(option:Number){}

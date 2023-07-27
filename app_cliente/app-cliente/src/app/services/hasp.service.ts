@@ -180,19 +180,24 @@ export class HaspService {
     this.subfeaturesState = [];
   }
 
-  getClientName():string{
-    this.http.get<string[]>(baseURL_SERVER + '/clientsNames').pipe(catchError(error => {
+  getClientsNames() {
+    return this.http.get<any[]>(baseURL_SERVER + '/clientsNames/');
+  }
+  /*
+  getClientsName():string{
+    this.http.get<any>(baseURL_SERVER + '/clientsNames/').pipe(catchError(error => {
       console.error('Error al obtener los nombres de los clientes:', error);
       return [];})).subscribe(
-        (data: string[]) => {
+        (data: any) => {
           this.clientNames = data;
         }
       );
+    alert(this.clientNames);
     var index = Math.floor(Math.random() * this.clientNames.length)
     this.clientname = this.clientNames[index];
     return this.clientname
   }
-
+*/
   removeClientName():void{
       this.clientname = "";
   }
