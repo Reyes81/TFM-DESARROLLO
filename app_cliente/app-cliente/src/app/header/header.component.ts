@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   faAddressCard = faAddressCard;
   faBars= faBars;
   faSignInAlt = faSignInAlt;
-  clientName:String;
+  clientName:string;
   nombresClientes: string[] = [];
   isChecked:boolean = false;
 
@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
           }
         );
 
-        alert(this.nombresClientes);
+        this.clientName = this.generateClientName();
         this.haspService.generateFeatures();
     }
 
@@ -74,5 +74,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  generateClientName(): string{
+    var index = Math.floor(Math.random() * this.nombresClientes.length)
+    this.clientName = this.nombresClientes[index];
+    return this.clientName;
+  }
   gotoNews(option:Number){}
 }
