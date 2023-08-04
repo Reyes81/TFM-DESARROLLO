@@ -21,12 +21,11 @@ export class HeaderComponent implements OnInit {
   faBars= faBars;
   faSignInAlt = faSignInAlt;
   clientName:string;
-  nombresClientes: string[] = [];
   isChecked:boolean = false;
 
   lang:string='es';
 
-  constructor(@Inject('baseURL') public BaseURL:string, private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
+  constructor(private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
  private haspService:HaspService, private sharedService:SharedService) {
 
     this.translateService.setDefaultLang(this.lang);
@@ -51,18 +50,9 @@ export class HeaderComponent implements OnInit {
     this.haspService.setStateHasp(this.isChecked);
 
     if(this.isChecked==true){
-        //this.clientName = this.haspService.getClientName();
-        this.haspService.getClientsNames().subscribe(
-          (data: any[]) => {
-            this.nombresClientes = data;
-          },
-          (error) => {
-            console.error('Error al obtener los nombres de los clientes:', error);
-          }
-        );
-
-        this.clientName = this.generateClientName();
-        this.haspService.generateFeatures();
+        this.haspService.generateClientName()      
+        this.clientName = this.haspService.getClientName();
+        //this.haspService.generateFeatures();
     }
 
     else{
@@ -70,14 +60,6 @@ export class HeaderComponent implements OnInit {
         this.haspService.removeSubFeatures();
         this.haspService.removeClientName();
     }
-
-
-  }
-
-  generateClientName(): string{
-    var index = Math.floor(Math.random() * this.nombresClientes.length)
-    this.clientName = this.nombresClientes[index];
-    return this.clientName;
   }
   gotoNews(option:Number){}
 }

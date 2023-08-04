@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { ProcesaHTTPMsjService } from './procesa-httpmsj.service';
 import { baseURL_SERVER } from '../compartido/baseurl';
 import  {catchError} from 'rxjs/operators';
+import { MD5 } from 'crypto-js';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ import  {catchError} from 'rxjs/operators';
 export class HaspService {
 
   id: number;
-  clientname: string;
+  clientName: string;
   clientNames: string[];
   environments: String[];
   features: String[];
@@ -25,7 +27,8 @@ export class HaspService {
   lastFeatureIndex:number;
   featureIndex:number;
   isChecked:Boolean = false;
-
+  licenses:any[] = [];
+  licensesNumbers: string[] = [];
 
 
   constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService){
@@ -33,7 +36,7 @@ export class HaspService {
       this.id=-1;
       this.lastFeatureIndex = -1;
       this.featureIndex = -1;
-      this.clientname="";
+      this.clientName="";
       this.clientNames = [];
 
       this.environments = ["Harbour", "Quarry", "Mine", "Warehouse"];
@@ -56,7 +59,7 @@ export class HaspService {
   //              FEATURES                 //
   //                                       //
   ///////////////////////////////////////////
-
+ /*
   //Crea un array de features
   generateFeatures():Feature[]{
 
@@ -83,6 +86,7 @@ export class HaspService {
       return this.featuresActives;
   }
 
+ 
   //Simulamos la lectura aleatoria de una feature del Hasp y generamos una versión ficticia
   //Los números de versión en el Hasp van de 1 a 127
   generateFeatureHasp(index:number):Feature{
@@ -99,6 +103,7 @@ export class HaspService {
       return featureHasp;
   }
 
+  
   getFeature(featureName:String):Feature{
 
   var _subFeatures:SubFeature[] = [];
@@ -110,7 +115,6 @@ export class HaspService {
 
     return feature;
   }
-
   //Consulta de una feature: Si tiene licencia devuelve la versión de la feature y en caso contrario [-1,-1,-1]
   getFeatureVersion(featureName:String): number[]{
 
@@ -125,7 +129,7 @@ export class HaspService {
 
       return versionFeature;
   }
-
+*/
   getFeatureIndex(featureName:String):number{
 
       var index:number=-1;
@@ -183,6 +187,62 @@ export class HaspService {
   getClientsNames() {
     return this.http.get<any[]>(baseURL_SERVER + '/clientsNames/');
   }
+
+  generateClientName(): void{
+    this.getClientsNames().subscribe(
+      (data: any[]) => {
+        this.clientNames = data;
+      },
+      (error) => {
+        console.error('Error al obtener los nombres de los clientes:', error);
+      }
+    );
+
+    var index = Math.floor(Math.random() * this.clientNames.length)
+    this.clientName = this.clientNames[index];
+    
+  }
+
+  getClientName(): string{
+    return this.clientName;
+  }
+
+  getClientLicenses(): Promise<any[]>{
+
+    // Codificar el nombre del client
+   
+    let clientNameHash: string = MD5(this.getClientName()).toString();
+
+    let url = baseURL_SERVER + '/getLicensesByClientName/' + clientNameHash;
+
+    return this.http.get<any[]>(url)
+      .toPromise() 
+      .then((data: any[]) => {
+        this.licenses = data;
+        return data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener las licencias:', error);
+        return [];
+      });
+  }
+
+  //Devuelve el objeto JSON que coincide con el número de licencia que se le pasa por parámetro
+  getClientLicense(number_license: string): any{
+
+    return this.licenses.find((license) => license.license_number === number_license);
+
+  }
+
+  //Devuelve todos los números de licencia correspondientes a las licencias de un cliente
+  getLicensesNumbers(): string[]{
+
+    this.licensesNumbers = this.licenses.map((item) => item.license_number);
+    return this.licensesNumbers;
+    
+  }
+  
+    
   /*
   getClientsName():string{
     this.http.get<any>(baseURL_SERVER + '/clientsNames/').pipe(catchError(error => {
@@ -199,7 +259,7 @@ export class HaspService {
   }
 */
   removeClientName():void{
-      this.clientname = "";
+      this.clientName = "";
   }
 
   setStateHasp(state:Boolean):void{

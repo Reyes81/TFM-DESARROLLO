@@ -39,44 +39,7 @@ export class CarruselComponent {
   })
 
   imageObject:any=[];
-  /*
-  imageObject = [
-    {
-      thumbImage: 'assets/img/slider/ech_tfm.jpg',
-      title: 'Simulador de ECH'
-    },
 
-    {
-      thumbImage: 'assets/img/slider/heavy_forklift_tfm.jpg',
-      title: 'Simulador de Heavy Forklift'
-    },
-
-    {
-      thumbImage: 'assets/img/slider/mhc_tfm.jpg',
-      title: 'Simulador de MHC'
-    },
-    {
-      thumbImage: 'assets/img/slider/reach_tfm.jpg',
-      title: 'Simulador de Reach-Stacker'
-    },
-    {
-      thumbImage: 'assets/img/slider/rmg_tfm.jpg',
-      title: 'Simulador de RMG'
-    },
-    {
-      thumbImage: 'assets/img/slider/roro_tfm.jpg',
-      title: 'Simulador de RoRo'
-    },
-    {
-      thumbImage: 'assets/img/slider/rtg_tfm.jpg',
-      title: 'Simulador de RTG'
-    },
-    {
-      thumbImage: 'assets/img/slider/sts_tfm.jpg',
-      title: 'Simulador de STS'
-    }
-    ];
-*/
 
  async loadEntities(){
 
@@ -85,7 +48,7 @@ export class CarruselComponent {
       this.entidadesArray = entidades;
       console.log('Subscription complete:', entidades);
       // Continuar con las acciones posteriores al subscribe
-      this.initCarrousel();
+      //this.initCarrousel();
     } catch (error) {
       this.errorMensaje = "error";
       console.error('Error during subscription:', error);
@@ -93,7 +56,7 @@ export class CarruselComponent {
   }
 
   initCarrousel():void{
-
+/*
     this.features = this.haspService.getFeatures();
 
     for(let i=0; i<this.entidadesArray.length;i++){
@@ -111,7 +74,7 @@ export class CarruselComponent {
       };
       this.imageObject.push(object);
     }
-    
+    */
   }
   
   imageClickHandler(event:number){

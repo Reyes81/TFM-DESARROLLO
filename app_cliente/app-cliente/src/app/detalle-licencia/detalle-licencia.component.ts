@@ -28,7 +28,7 @@ export class DetalleLicenciaComponent {
 
   title:String='';
   entidad:Entidad = new Entidad();
-  feature:Feature = new Feature("",[-1,-1,-1],[]);
+  feature:Feature = new Feature("","");
   subFeatures:SubFeature[] = [];
   featureName:String;
   featureVersion:number[];
@@ -46,18 +46,18 @@ export class DetalleLicenciaComponent {
   }
 
   ngOnInit(): void {
-    this.entidad = this.miServicio.getEntidad2();
-    this.feature = this.haspService.getFeature(this.entidad.feature);
-    this.featureName = this.feature.name;
-    this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
-    this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
-    this.subFeatures = this.feature.subFeactures;
+    //this.entidad = this.miServicio.getEntidad2();
+    //this.feature = this.haspService.getFeature(this.entidad.feature);
+    //this.featureName = this.feature.name;
+    //this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
+    //this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
+    //this.subFeatures = this.feature.subFeactures;
     /*
     if(this.subFeatures.length == 0){
       this.haspService.generateSubfeatures();
       this.subFeatures = this.haspService.getSubFeatures();
     }*/
-    this.title = this.entidad.name;
+    //this.title = this.entidad.name;
   }
 
   openLink() {

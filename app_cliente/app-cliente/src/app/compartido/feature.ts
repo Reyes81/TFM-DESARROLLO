@@ -2,13 +2,12 @@ import { SubFeature } from "./subFeature";
 export class Feature{
 
 
-  name:String;
-  version:number[];
-  subFeactures:SubFeature[] = [];
+  name:string = "";
+  environment:string = "";
+ 
 
-  constructor(name:String, version:number[], subFeactures:SubFeature[]){
+  constructor(name:string, environment:string){
     this.name = name;
-    this.version = version;
-    this.subFeactures = subFeactures;
+    this.environment = environment;
   }
 }
