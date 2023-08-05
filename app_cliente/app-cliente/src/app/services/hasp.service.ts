@@ -28,8 +28,9 @@ export class HaspService {
   featureIndex:number;
   isChecked:Boolean = false;
   licenses:any[] = [];
+  license:any;
   licensesNumbers: string[] = [];
-
+  licenseNumber: string = "";
 
   constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService){
 
@@ -234,12 +235,32 @@ export class HaspService {
 
   }
 
+  //Guardamos un número de licencia
+  setLicenseNumber(number_license: string): void{
+    this.licenseNumber = number_license;
+  }
+
+  //Devolvemos el número de licencia almacenado
+  getLicenseNumber(): string{
+    return this.licenseNumber;
+  }
+
   //Devuelve todos los números de licencia correspondientes a las licencias de un cliente
   getLicensesNumbers(): string[]{
 
     this.licensesNumbers = this.licenses.map((item) => item.license_number);
     return this.licensesNumbers;
     
+  }
+
+  //Guardamos una licencia concreta
+  setLicense(license:any): void{
+      this.license = license;
+  }
+
+  //Devolvemos una licencia concreta
+  getLicense():any{
+    return this.license;
   }
   
     

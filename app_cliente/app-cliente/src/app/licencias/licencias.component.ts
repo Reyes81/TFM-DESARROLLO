@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HaspService } from '../services/hasp.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-licencias',
@@ -11,14 +12,14 @@ export class LicenciasComponent {
   licenses:any[] = [];
   errorMessage:string = "";
   licensesNumbers: string[] = []; 
-  constructor(private haspService:HaspService) {
+  constructor(private haspService:HaspService, private router: Router) {
    
      }
    
      ngOnInit(): void {
 
       this.loadLicenses();
-      
+     
      }
 
      async loadLicenses(){
@@ -32,6 +33,13 @@ export class LicenciasComponent {
         this.errorMessage = "error";
         console.error('Error during subscription:', error);
       }
+
+    }
+
+    onClickLicenseNumber(license:any, event: Event): void{
+      event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+      this.haspService.setLicense(license);
+      this.router.navigate(["/carrusel"]);
 
     }
 

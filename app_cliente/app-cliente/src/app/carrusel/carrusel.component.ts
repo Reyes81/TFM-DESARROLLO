@@ -17,20 +17,18 @@ import { HaspService } from '../services/hasp.service';
 
 export class CarruselComponent {
 
-  features:Feature[] = [];
-  entidadesActive:Entidad[] = [];
-  entidadesArray:Entidad[] = [];
-  entidadesSel: Entidad[] = [];
-  entidad:Entidad = new Entidad();
-  errorMensaje: string= "";
+  license: any;
+  features: string[] = [];
 
-  constructor(@Inject('baseURL') public BaseURL:string, private router:Router, private entidadesService:EntidadService,private haspService:HaspService){
+  constructor(@Inject('baseURL') public BaseURL:string, private router:Router,private haspService:HaspService){
     
     
   }
 
   ngOnInit():void{
-    this.loadEntities();
+    this.license = this.haspService.getLicense();
+    this.initCarrousel();
+    
   }
    
 
@@ -40,7 +38,24 @@ export class CarruselComponent {
 
   imageObject:any=[];
 
+  getFeaturesLicense(): string[]{
+    return this.license.features;
 
+  }
+
+  initCarrousel():void{
+
+    this.features = this.getFeaturesLicense();
+    for(let j=0; j<this.features.length;j++){
+      var object = {
+        thumbImage: this.features[j] + ".jpg",
+        title: this.features[j]
+      };
+      this.imageObject.push(object);
+    }
+   
+  }
+/*
  async loadEntities(){
 
     try {
@@ -55,27 +70,7 @@ export class CarruselComponent {
     }
   }
 
-  initCarrousel():void{
-/*
-    this.features = this.haspService.getFeatures();
-
-    for(let i=0; i<this.entidadesArray.length;i++){
-      for(let j=0;j<this.features.length;j++){
-        if(this.entidadesArray[i].feature == this.features[j].name){
-          this.entidadesActive.push(this.entidadesArray[i]);
-        }
-      }
-    }
-
-    for(let j=0; j<this.entidadesActive.length;j++){
-      var object = {
-        thumbImage: this.entidadesActive[j].image,
-        title: this.entidadesActive[j].name
-      };
-      this.imageObject.push(object);
-    }
-    */
-  }
+ 
   
   imageClickHandler(event:number){
   
@@ -94,7 +89,8 @@ export class CarruselComponent {
     this.router.navigate(["/detalle-licencia"]);
   
 
-  }
+  } */
+  
   }
 
 
