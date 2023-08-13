@@ -12,6 +12,12 @@ import{ MatToolbarModule} from'@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 import { MatMenuModule} from '@angular/material/menu';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -45,6 +51,7 @@ import { Carrusel2Component } from './carrusel2/carrusel2.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { InfoLsymComponent } from './info-lsym/info-lsym.component';
 import { LicenciasComponent } from './licencias/licencias.component';
+import { NoticiasFechaComponent } from './noticias-fecha/noticias-fecha.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -64,6 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
     NoticiasComponent,
     InfoLsymComponent,
     LicenciasComponent,
+    NoticiasFechaComponent,
 
   ],
   imports: [
@@ -77,6 +85,9 @@ export function createTranslateLoader(http: HttpClient) {
     MatSelectModule,
     MatMenuModule,
     MatCardModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,

@@ -34,8 +34,17 @@
   "COMENTARIO2": "Votre commentaire"
 },
 "NOTICIAS":{
-  "NOTICIAS": "Noticias",
-  "TODAS":"Todas las noticias",
-  "ULTIMAS":"Últimas noticias"
+  "NOTICIAS": "Nouvelles",
+  "NOTICIA": "Nouvelles",
+  "TODAS":"Toutes les nouvelles",
+  "DATE": "Filtrer par Date",
+  "TYPE": "Filtrer par type"
+},
+"COMUN":{
+  "VOLVER":"Retour ",
+  "BUSCAR":"Recherche",
+  "BUSCAR-FECHA": "Choisissez une date",
+  "FECHA": "Date",
+  "TIPO": "Type"
 }
 }

@@ -7,6 +7,7 @@ import { NoticiasComponent } from '../noticias/noticias.component';
 import { InfoLsymComponent } from '../info-lsym/info-lsym.component';
 import { CarruselComponent } from '../carrusel/carrusel.component';
 import { Carrusel2Component } from '../carrusel2/carrusel2.component';
+import { NoticiasFechaComponent } from '../noticias-fecha/noticias-fecha.component';
 
 export const rutas: Routes= [
 
@@ -14,6 +15,7 @@ export const rutas: Routes= [
 { path: 'inicio', component: InicioComponent},
 { path: 'detalle-licencia', component: DetalleLicenciaComponent},
 { path: 'noticias', component: NoticiasComponent},
+{ path: 'noticias-fecha', component: NoticiasFechaComponent},
 { path: 'sobre-lsym', component: InfoLsymComponent},
 { path: 'carrusel', component: CarruselComponent},
 { path: 'carrusel2', component: Carrusel2Component},

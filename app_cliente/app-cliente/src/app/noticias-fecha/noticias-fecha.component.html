@@ -1,0 +1,25 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+    <div class="row">
+      <div class="col">
+        <h2 class="text_subtitle"><span>{{ 'NOTICIAS.NOTICIAS' | translate }}</span></h2>
+        <hr>
+      </div>
+        <div>
+            <h2>{{ 'COMUN.BUSCAR-FECHA' | translate }}</h2>
+            <br>
+            <!--
+            <mat-form-field>
+            <input type="text" class="form-control" placeholder="Year-Month-Day" [(ngModel)]="date_news" required>
+            </mat-form-field>
+        -->
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" [(ngModel)]="date_news">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+            <button type="button" (click)="setNewsDate()" class="btn btn-sm btn-primary" style="margin-left:10px; margin-right:10px;">{{ 'COMUN.BUSCAR' | translate }}</button>
+        </div>
+        <div class="row" style="margin-left:30px; margin-top: 10px; width: 50%; display:flex;justify-content: flex-start" >
+          <button style="margin-bottom: 2px; width: 30%;" type="button" routerLink="/inicio" class="btn btn-sm btn-primary">{{ 'COMUN.VOLVER' | translate }}</button>
+        </div>
+</div>

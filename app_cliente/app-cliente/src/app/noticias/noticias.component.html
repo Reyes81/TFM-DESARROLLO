@@ -1,65 +1,26 @@
-<div class="container"
-     fxLayout="column"
-     fxLayoutGap="10px">
-
-     <div class="row">
-            <div class="col">
-              <h2 class="text_subtitle"><span>{{ 'NOTICIAS.NOTICIAS' | translate }}</span></h2>
-              <hr>
-            </div>
-     </div>
-<div class="cards">
-<div class="row" style="justify-content: center;">
-<div class="col-md-3">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title class="title">{{noticia.titleES}}</mat-card-title>
-            
-        </mat-card-header>
-        <img mat-card-image src={{noticia.image}} alt="image_news" clas="image">
-        <mat-card-content>
-        <p class="text">
-            {{noticia.textES}}
-        </p>
-        </mat-card-content>
-        <mat-card-subtitle class="fecha">05-06-2023</mat-card-subtitle>
-    </mat-card>
-</div>
-
-<div class="col-md-3">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title class="title">{{noticia.titleES}}</mat-card-title>
-            
-        </mat-card-header>
-        <img mat-card-image src={{noticia.image}} alt="image_news" clas="image">
-        <mat-card-content>
-        <p class="text">
-            {{noticia.textES}}
-        </p>
-        </mat-card-content>
-        <mat-card-subtitle class="fecha">05-06-2023</mat-card-subtitle>
-    </mat-card>
-</div>
-
-<div class="col-md-3">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title class="title">{{noticia.titleES}}</mat-card-title>
-            
-        </mat-card-header>
-        <img mat-card-image src={{noticia.image}} alt="image_news" clas="image">
-        <mat-card-content>
-        <p class="text">
-            {{noticia.textES}}
-        </p>
-        </mat-card-content>
-        <mat-card-subtitle class="fecha">05-06-2023</mat-card-subtitle>
-    </mat-card>
-</div>
-</div>
-</div>
-</div>
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+    <div class="row">
+      <div class="col">
+        <h2 class="text_subtitle"><span>{{ 'NOTICIAS.NOTICIAS' | translate }}</span></h2>
+        <hr>
+      </div>
+      
+      <div>
+        <div *ngFor="let news of news_list; let i = index" class="news">
+          <div class="linea">
+            <h3 class="text_subtitle" style="display: inline">ID: </h3>{{ i + 1 }}</div>
+          <div class="linea">
+            <h3 class="text_subtitle" style="display: inline">{{ 'COMUN.FECHA' | translate }}: </h3>{{ news.published_date }}</div>
+          <div class="linea">
+            <h3 class="text_subtitle" style="display: inline">{{ 'COMUN.TIPO' | translate }}: </h3>{{ news.type.charAt(0).toUpperCase() + news.type.slice(1) }}</div>
+          <div class="linea">
+            <h3 class="text_subtitle" style="display: inline">{{ 'NOTICIAS.NOTICIA' | translate }}: </h3>{{ news.new }}</div>
+          <br><hr><br>
+        </div>
+    </div>
+    </div>
+    
+  </div>
+  
+  
+  

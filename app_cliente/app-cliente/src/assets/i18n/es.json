@@ -38,7 +38,17 @@
 },
 "NOTICIAS":{
   "NOTICIAS": "Noticias",
-  "TODAS":"Todas las noticias",
-  "ULTIMAS":"Últimas noticias"
+  "NOTICIA": "Noticia",
+  "TODAS":"Todas las Noticias",
+  "DATE": "Filtrar por Fecha",
+  "TYPE": "Filtrar por Tipo"
+},
+
+"COMUN":{
+  "VOLVER":"Volver",
+  "BUSCAR":"Buscar",
+  "BUSCAR-FECHA": "Seleccione una fecha",
+  "FECHA": "Fecha",
+  "TIPO": "Tipo"
 }
 }

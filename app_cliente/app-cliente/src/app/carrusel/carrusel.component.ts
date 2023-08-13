@@ -48,7 +48,7 @@ export class CarruselComponent {
     this.features = this.getFeaturesLicense();
     for(let j=0; j<this.features.length;j++){
       var object = {
-        thumbImage: this.features[j] + ".jpg",
+        thumbImage: "assets/img/slider/" + this.features[j] + ".jpg",
         title: this.features[j]
       };
       this.imageObject.push(object);
@@ -71,9 +71,11 @@ export class CarruselComponent {
   }
 
  
-  
+  */
   imageClickHandler(event:number){
   
+    alert("Hola");
+    /*
     for(let i=0; i<this.entidadesArray.length; i++){
       if(this.entidadesArray[i].name == this.imageObject[event].title)
         {
@@ -87,9 +89,9 @@ export class CarruselComponent {
       this.entidadesService.setEntidad(this.entidad);
     }
     this.router.navigate(["/detalle-licencia"]);
-  
+    */
 
-  } */
+  } 
   
   }
 

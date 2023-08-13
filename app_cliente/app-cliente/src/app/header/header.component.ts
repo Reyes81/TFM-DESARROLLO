@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import{ faBars,faHome, faInfo, faList, faAddressCard,faSignInAlt, faNewspaper} from'@fortawesome/free-solid-svg-icons';
 import { ChangeTranslateService } from '../services/change-translate.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HaspService } from '../services/hasp.service';
 import { SharedService } from '../services/shared.service';
+import { NoticiasService } from '../services/noticias.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +28,7 @@ export class HeaderComponent implements OnInit {
   lang:string='es';
 
   constructor(private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
- private haspService:HaspService, private sharedService:SharedService) {
+ private haspService:HaspService, private sharedService:SharedService, private noticiasService:NoticiasService, private router: Router, private changeDetector: ChangeDetectorRef) {
 
     this.translateService.setDefaultLang(this.lang);
     this.clientName="";
@@ -61,5 +63,19 @@ export class HeaderComponent implements OnInit {
         this.haspService.removeClientName();
     }
   }
-  gotoNews(option:Number){}
+
+  goToNews(option: string): void{
+    
+    this.noticiasService.setOption(option);
+   
+    if(option=='date')
+      this.router.navigate(["/noticias-fecha"]);
+    else 
+    {
+      this.changeDetector.detectChanges();
+      this.router.navigate(["/noticias"]);
+    }
+      
+  }
+
 }
