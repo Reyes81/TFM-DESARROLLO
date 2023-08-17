@@ -74,7 +74,9 @@ export class CarruselComponent {
   */
   imageClickHandler(event:number){
   
-    alert("Hola");
+    this.haspService.setFeature(this.imageObject[event].title)
+    this.router.navigate(["/detalle-licencia"]);
+  
     /*
     for(let i=0; i<this.entidadesArray.length; i++){
       if(this.entidadesArray[i].name == this.imageObject[event].title)
@@ -88,7 +90,7 @@ export class CarruselComponent {
     {
       this.entidadesService.setEntidad(this.entidad);
     }
-    this.router.navigate(["/detalle-licencia"]);
+    
     */
 
   } 

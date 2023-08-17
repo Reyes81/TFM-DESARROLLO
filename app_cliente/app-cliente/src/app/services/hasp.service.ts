@@ -20,7 +20,7 @@ export class HaspService {
   environments: String[];
   features: String[];
   featuresAll: String[];
-  subFeatures: String[];
+  subFeatures: string[];
   featuresHasp = new Map();
   subfeaturesState:SubFeature[] = [];
   featuresActives:Feature[]=[];
@@ -31,6 +31,10 @@ export class HaspService {
   license:any;
   licensesNumbers: string[] = [];
   licenseNumber: string = "";
+  feature: string = "";
+  installers: any[] = [];
+  latest_installer:any;
+  installersByFeature: any[] = [];
 
   constructor(private http: HttpClient, private procesaHTTPMsjService:ProcesaHTTPMsjService){
 
@@ -164,8 +168,8 @@ export class HaspService {
     }
   }
 
-  getSubFeatures():SubFeature[]{
-    return this.subfeaturesState;
+  getSubFeatures():string[]{
+    return this.subFeatures
   }
 
   //Consulta de una subfeature: Devuelve true si está activa o false en caso contrario
@@ -208,6 +212,7 @@ export class HaspService {
     return this.clientName;
   }
 
+  //Devolvemos las licencias de un cliente
   getClientLicenses(): Promise<any[]>{
 
     // Codificar el nombre del client
@@ -223,7 +228,7 @@ export class HaspService {
         return data;
       })
       .catch((error) => {
-        console.error('Error al obtener las licencias:', error);
+        console.error('Error al obtener las licencias', error);
         return [];
       });
   }
@@ -262,23 +267,95 @@ export class HaspService {
   getLicense():any{
     return this.license;
   }
-  
-    
-  /*
-  getClientsName():string{
-    this.http.get<any>(baseURL_SERVER + '/clientsNames/').pipe(catchError(error => {
-      console.error('Error al obtener los nombres de los clientes:', error);
-      return [];})).subscribe(
-        (data: any) => {
-          this.clientNames = data;
-        }
-      );
-    alert(this.clientNames);
-    var index = Math.floor(Math.random() * this.clientNames.length)
-    this.clientname = this.clientNames[index];
-    return this.clientname
+
+  //Devolvemos los instaladores de un cliennte
+  getClientInstallers(): Promise<any[]>{
+
+    // Codificar el nombre del client
+   
+    let clientNameHash: string = MD5(this.getClientName()).toString();
+
+    let url = baseURL_SERVER + '/getInstallersByClientName/' + clientNameHash;
+
+    return this.http.get<any[]>(url)
+      .toPromise() 
+      .then((data: any[]) => {
+        this.licenses = data;
+        return data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener los instaladores:', error);
+        return [];
+      });
   }
-*/
+
+  //Devolvemos todos los instaladores de una feature
+  getFeatureInstallers(): Promise<any[]>{
+
+    let url = baseURL_SERVER + '/getInstallersByFeature/' + this.getFeature();
+
+    return this.http.get<any[]>(url)
+      .toPromise() 
+      .then((data: any[]) => {
+        this.installersByFeature = data;
+        return data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener los instaladores:', error);
+        return [];
+      });
+
+  }
+
+  //Obtenemos el instalador más actual de una feature
+  getLatestInstaller(): Promise<any>{
+
+    let url = baseURL_SERVER + '/getLatestInstaller/' + this.getFeature();
+
+    return this.http.get<any>(url)
+      .toPromise() 
+      .then((data: any) => {
+        this.latest_installer = data;
+        return data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener los instaladores:', error);
+        return [];
+      });
+
+  }
+
+  //Obtenemos el instalador más actual de una feature de un cliente concreto
+  getLatestClientInstaller(): Promise<any>{
+
+    let clientNameHash: string = MD5(this.getClientName()).toString();
+
+    let url = baseURL_SERVER + '/getLatestInstallerClient/' + clientNameHash + "/" + this.getFeature();
+
+    return this.http.get<any>(url)
+      .toPromise() 
+      .then((data: any) => {
+        this.latest_installer = data;
+        return data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener el instalador:', error);
+        return [];
+      });
+
+  }
+
+  //Guardamos una feature
+  setFeature(feature:string): void{
+    this.feature = feature;
+  }
+
+  //Devolvemos una feature
+  getFeature():string{
+    return this.feature;
+  }
+  
+
   removeClientName():void{
       this.clientName = "";
   }

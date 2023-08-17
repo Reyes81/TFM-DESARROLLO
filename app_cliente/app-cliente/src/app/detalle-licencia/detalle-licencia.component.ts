@@ -10,6 +10,7 @@ import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
 import swal from 'sweetalert2';
 
+
 const electron = (<any>window).require('electron');
 const shell = electron.shell;
 //const hasp = require('./hasp.node');
@@ -26,40 +27,117 @@ export class DetalleLicenciaComponent {
   faCheck = faCircleCheck;
   faClose = faCircleXmark;
 
-  title:String='';
-  entidad:Entidad = new Entidad();
-  feature:Feature = new Feature("","");
-  subFeatures:SubFeature[] = [];
-  featureName:String;
-  featureVersion:number[];
-  featureVersionString:String;
-  states:Boolean[]=[];
+  title: string = "";
+  feature: string = "";
+  path_image: string = "";
+  client_name: string = "";
+  license: any;
+  subfeatures_license: string[] = [];
+  subfeatures: string[] = [];
+  feature_installers: any[] = [];
+  client_installers: any[] = [];
+  errorMessage: string = "";
 
-  constructor( private miServicio:EntidadService,private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
+  checkVersion: Boolean = false;
+  actual_version: string = "";
+  latest_version: string = ""
+  latest_installer:any;
+  actual_installer:any;
+
+  date_actual_version: string = "";
+  date_latest_version: string = "";
+ 
+
+  constructor( private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
 
     this.translateService.setDefaultLang(this.selectedLanguage);
-    this.translateService.use(this.changeTranslateService.getLanguage());
-    this.featureName ="";
-    this.featureVersion = [-1,-1,-1];
-    this.featureVersionString = "";
 
   }
 
   ngOnInit(): void {
-    //this.entidad = this.miServicio.getEntidad2();
-    //this.feature = this.haspService.getFeature(this.entidad.feature);
-    //this.featureName = this.feature.name;
-    //this.featureVersion = this.haspService.getFeatureVersion(this.featureName);
-    //this.featureVersionString = "v."+ this.featureVersion[0] + "," + this.featureVersion[1] + "," + this.featureVersion[2];
-    //this.subFeatures = this.feature.subFeactures;
-    /*
-    if(this.subFeatures.length == 0){
-      this.haspService.generateSubfeatures();
-      this.subFeatures = this.haspService.getSubFeatures();
-    }*/
-    //this.title = this.entidad.name;
+    
+    this.updateComponent();
+
   }
 
+  //Obtenemos el instalador más actual de una feature de un cliente
+  async getLatestInstallerClient(): Promise<void>{
+
+    try {
+      this.actual_installer = await this.haspService.getLatestClientInstaller();
+
+      console.log('Subscription complete:', this.actual_installer);
+
+      this.actual_version = this.actual_installer.version;
+      this.date_actual_version = this.actual_installer.published_date;
+  
+    } catch (error) {
+      this.errorMessage = "error";
+      console.error('Error during subscription:', error);
+    }
+}
+
+  //Obtenemos el instalador más actual de una feature
+  async getLatestInstaller(): Promise<void>{
+
+    try {
+      this.latest_installer = await this.haspService.getLatestInstaller();
+      this.date_latest_version = this.latest_installer.published_date;
+      console.log('Subscription complete:', this.latest_installer);
+      // Continuar con las acciones posteriores al subscribe
+    } catch (error) {
+      this.errorMessage = "error";
+      console.error('Error during subscription:', error);
+    }
+}
+
+  //Obtenemos los instaladores de un cliente
+  async getClientInstallers(): Promise<void>{
+
+      try {
+        this.client_installers = await this.haspService.getClientInstallers();
+        console.log('Subscription complete:', this.client_installers);
+        // Continuar con las acciones posteriores al subscribe
+      } catch (error) {
+        this.errorMessage = "error";
+        console.error('Error during subscription:', error);
+      }
+  }
+
+
+  async manageVersion(): Promise<void>{
+
+    await this.getLatestInstaller();
+    await this.getLatestInstallerClient();
+
+    const latest_date: Date = new Date(this.date_latest_version);
+    alert(latest_date);
+    
+    const actual_date: Date = new Date(this.date_actual_version);
+    alert(this.date_actual_version);
+
+    if(latest_date > actual_date)
+    {
+      this.checkVersion = true;
+      this.latest_version = this.latest_installer.version;
+    }
+  }
+
+  async updateComponent(): Promise<void>{
+
+    this.feature = this.haspService.getFeature(); 
+    this.license = this.haspService.getLicense();
+    //this.getClientInstallers();
+    
+
+    this.subfeatures = this.haspService.getSubFeatures();
+    this.subfeatures_license = this.license.subfeatures;
+     
+    this.title = this.feature;
+    this.path_image = "assets/img/slider/" + this.feature + ".jpg" 
+
+    this.manageVersion();
+  }
   openLink() {
     const url = 'https://lsymserver.uv.es/mantis/login_page.php';
     shell.openExternal(url);
@@ -69,8 +147,19 @@ export class DetalleLicenciaComponent {
     swal.fire('En desarrollo', 'Instalará la nueva actualización', 'success');
   }
 
-  uninstall(): void{
-    swal.fire('En desarrollo', 'Desinstalará la actualización actual', 'success');
+  changeLog(): void{
+    
+
+    let changeLog:string = this.latest_installer.changeLog;
+    const lineas = changeLog.split('\r\n');
+    const mensaje = lineas.join('<br/>'); 
+    
+    swal.fire({
+      title: 'ChangeLog ' + this.latest_version,
+      html: mensaje,
+      icon: 'info',
+    });
+    
   }
   }
 
