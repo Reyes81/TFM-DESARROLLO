@@ -9,6 +9,10 @@ import { HaspService } from '../services/hasp.service';
 import { Feature } from '../compartido/feature';
 import { SubFeature } from '../compartido/subFeature';
 import swal from 'sweetalert2';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { baseURL_SERVER } from '../compartido/baseurl';
+import { MD5 } from 'crypto-js';
+
 
 
 const electron = (<any>window).require('electron');
@@ -46,9 +50,11 @@ export class DetalleLicenciaComponent {
 
   date_actual_version: string = "";
   date_latest_version: string = "";
+
+  actual_changeLog: string = "";
  
 
-  constructor( private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
+  constructor( private http:HttpClient, private translateService: TranslateService, private changeTranslateService:ChangeTranslateService, private haspService:HaspService){
 
     this.translateService.setDefaultLang(this.selectedLanguage);
 
@@ -107,14 +113,9 @@ export class DetalleLicenciaComponent {
 
   async manageVersion(): Promise<void>{
 
-    await this.getLatestInstaller();
-    await this.getLatestInstallerClient();
-
     const latest_date: Date = new Date(this.date_latest_version);
-    alert(latest_date);
     
     const actual_date: Date = new Date(this.date_actual_version);
-    alert(this.date_actual_version);
 
     if(latest_date > actual_date)
     {
@@ -127,11 +128,14 @@ export class DetalleLicenciaComponent {
 
     this.feature = this.haspService.getFeature(); 
     this.license = this.haspService.getLicense();
-    //this.getClientInstallers();
+    await this.getLatestInstaller();
+    await this.getLatestInstallerClient();
     
 
     this.subfeatures = this.haspService.getSubFeatures();
     this.subfeatures_license = this.license.subfeatures;
+
+    this.actual_changeLog = this.actual_installer.changeLog.split('\r\n');
      
     this.title = this.feature;
     this.path_image = "assets/img/slider/" + this.feature + ".jpg" 
@@ -143,13 +147,60 @@ export class DetalleLicenciaComponent {
     shell.openExternal(url);
   }
 
-  install(): void{
-    swal.fire('En desarrollo', 'Instalará la nueva actualización', 'success');
+  download() {
+    let url = "http://172.17.0.3:80/" + this.latest_version + ".exe";
+    
+  
+    this.http.get(url, { responseType: 'blob' }).subscribe(
+      (response: Blob) => {
+      // Creamos un objeto Blob y obtenemos su URL
+      const blob = new Blob([response], { type: 'application/octet-stream' });
+      const blob_url = window.URL.createObjectURL(blob);
+      
+      // Creamos un enlace temporal para la descarga del instalador
+      const link = document.createElement('a');
+      link.href = blob_url;
+      link.download = this.latest_version + ".exe"; 
+      link.click();
+      
+      // Liberamos recursos después de la descarga
+      window.URL.revokeObjectURL(blob_url);
+
+      },
+      (error) => {
+        console.error('Error en la descarga', error);
+      }
+    );
+
+    //Actualizamos la base de datos
+    let clientNameHash: string = MD5(this.haspService.getClientName()).toString();
+    let id_installer: number = this.latest_installer.id;
+    
+    let url_update = baseURL_SERVER + '/updateInstaller/' + clientNameHash + '/' + id_installer + '/';
+
+    const csrfToken = document.cookie.match(/csrftoken=([^;]*)/);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrfToken ? csrfToken[1] : ''
+    });
+
+    return this.http.put(url_update, {headers}).subscribe(
+      (response) => {
+        console.log('Instalador actualizado con éxito', response);
+         //Actualizamos el componente
+         this.updateComponent();
+      },
+      (error) => {
+        console.error('Error al actualizar el instalador', error);
+      }
+    );
+
+   
   }
+  
 
   changeLog(): void{
     
-
     let changeLog:string = this.latest_installer.changeLog;
     const lineas = changeLog.split('\r\n');
     const mensaje = lineas.join('<br/>'); 

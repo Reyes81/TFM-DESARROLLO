@@ -4,7 +4,10 @@
       "ACTIVAS": "Active Licenses",
       "INCIDENCIAS": "Incident Report",
       "CAMBIOS": "Change Log",
-      "VERSION": "Version"
+      "VERSION": "Version",
+      "ULTIMA": "Latest Version",
+      "ACTUALIZADA": "Your version is up to date",
+      "DESCARGAR": "Download"
   },
   "HEADER": {
     "PRODUCTOS": "Products",

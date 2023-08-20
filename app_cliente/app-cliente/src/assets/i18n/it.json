@@ -4,7 +4,10 @@
       "ACTIVAS": "Licenze Attive",
       "INCIDENCIAS": "Verbale di incidente",
       "CAMBIOS": "Registro delle modifiche",
-      "VERSION": "Versione"
+      "VERSION": "Versione",
+      "ULTIMA": "Ultima versione",
+      "ACTUALIZADA": "La versione è aggiornata",
+      "DESCARGAR": "Scaricare"
   },
   "HEADER": {
     "PRODUCTOS": "Prodotti",

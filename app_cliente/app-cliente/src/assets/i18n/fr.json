@@ -4,7 +4,10 @@
       "ACTIVAS": "Licences Actives",
       "INCIDENCIAS": "Rapport d'incident",
       "CAMBIOS": "Journal des modifications",
-      "VERSION": "Version"
+      "VERSION": "Version",
+      "ULTIMA": "Dernière version",
+      "ACTUALIZADA": "Votre version est à jour",
+      "DESCARGAR": "Télécharger"
   },
   "HEADER": {
     "PRODUCTOS": "Produits",

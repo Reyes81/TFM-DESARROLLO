@@ -22,15 +22,15 @@
             <ul style="font-family:Helvetica; font-size: small; font-weight: bold; margin-bottom: 5px;">
                <li>Feature: {{feature}}</li>
                <li>{{ 'DETALLE.VERSION' | translate }}: {{actual_version}}</li>
-               <li *ngIf="checkVersion; else versionAct">Última versión: {{latest_version}}</li>
-               <ng-template #versionAct><li>Última Versión: Su versión está actualizada</li></ng-template>
+               <li *ngIf="checkVersion; else versionAct">{{ 'DETALLE.ULTIMA' | translate }}: <span style="color: green;">{{latest_version}}</span></li>
+               <ng-template #versionAct><li>{{ 'DETALLE.ULTIMA' | translate }}: <span style="color: green;">{{ 'DETALLE.ACTUALIZADA' | translate }}</span></li></ng-template>
 
             </ul>
 
 
             <div class="row" style="display: flex; justify-content: left;" *ngIf="checkVersion">
               <div class="col-md-2" style="margin-left: 10px; margin-right: 10px;">
-                    <button type="button"  (click)="install()" class="btn btn-sm btn-primary">Instalar</button>
+                    <button type="button"  (click)="download()" class="btn btn-sm btn-primary">{{ 'DETALLE.DESCARGAR' | translate }}</button>
               </div>
               <div class="col-md-2"  style="margin-left: 10px; margin-right:10px;">
                 <button type="button" (click)="changeLog()" class="btn btn-sm btn-primary">ChangeLog</button>
@@ -75,11 +75,14 @@
             <div class="col">
             <p class="subfeature">{{ 'DETALLE.CAMBIOS' | translate }}</p>
             <hr>
+            <ul  style="font-family:Helvetica; font-size: small; font-weight: bold; margin-bottom: 1px;" *ngFor="let line of actual_changeLog">
+              <li>{{line}}</li>
+           </ul>
 
          </div>
         </div>
         <div class="row" style="margin-top: 10px; width: 100%; display:flex;justify-content: flex-end" >
-          <button style="margin-bottom: 2px; width: 30%;" type="button" routerLink="/inicio" class="btn btn-sm btn-primary">Volver</button>
+          <button style="margin-bottom: 2px; width: 30%;" type="button" routerLink="/inicio" class="btn btn-sm btn-primary">{{ 'COMUN.VOLVER' | translate }}</button>
         </div>
         </div>
        </div>

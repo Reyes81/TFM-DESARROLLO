@@ -52,6 +52,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { InfoLsymComponent } from './info-lsym/info-lsym.component';
 import { LicenciasComponent } from './licencias/licencias.component';
 import { NoticiasFechaComponent } from './noticias-fecha/noticias-fecha.component';
+import { LoginComponent } from './login/login.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -72,6 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
     InfoLsymComponent,
     LicenciasComponent,
     NoticiasFechaComponent,
+    LoginComponent,
 
   ],
   imports: [
