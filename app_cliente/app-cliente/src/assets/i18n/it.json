@@ -48,6 +48,10 @@
   "BUSCAR":"Ricerca",
   "BUSCAR-FECHA": "Selezionare una data",
   "FECHA": "Data",
-  "TIPO": "Tipo"
+  "TIPO": "Tipo",
+  "BIENVENIDO": "Benvenuti",
+  "ERROR": "Errore",
+  "USUARIO_INCORRECTO": "L'utente non è corretto",
+  "USUARIO": "Utente"
 }
 }

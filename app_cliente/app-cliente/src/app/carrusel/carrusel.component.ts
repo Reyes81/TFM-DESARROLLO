@@ -3,7 +3,6 @@ import { Component, Inject, Injectable } from '@angular/core';
 import{ Router} from '@angular/router'
 import { EntidadService} from '../services/entidad.service'
 import { Entidad } from '../compartido/entidad';
-import { MiServicioService } from '../services/mi-servicio.service';
 import { Feature } from '../compartido/feature';
 import { ImageObject } from '../compartido/imageObject';
 import { HaspService } from '../services/hasp.service';

@@ -22,6 +22,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import{ FlexLayoutModule} from'@angular/flex-layout';
 
@@ -88,6 +89,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatMenuModule,
     MatCardModule,
     MatInputModule,
+    MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,

@@ -6,8 +6,10 @@
     <a mat-button id="sobre-lsym" routerLink="/sobre-lsym"><fa-icon [icon]="faInfo"></fa-icon> {{ 'HEADER.SOBRE' | translate }} </a>
     <a mat-button id="noticias" [matMenuTriggerFor]="noticias"><fa-icon [icon]="faNewspaper"></fa-icon> {{ 'HEADER.NOTICIAS' | translate }} </a>
     <a mat-button routerLink="/contacto"><fa-icon [icon]="faAddressCard"></fa-icon> {{ 'HEADER.CONTACTO' | translate }} </a>
-    <div class="checkbox_"><p style="align-self: center; font-size: medium; font-weight: normal;"> <input type="checkbox" style= "border-top:5px ;" [(ngModel)]="isChecked" (change)="updateInitComponent()">Simular Hasp </p></div>
-
+    <!-- <div class="checkbox_"><p style="align-self: center; font-size: medium; font-weight: normal;"> <input type="checkbox" style= "border-top:5px ;" [(ngModel)]="isChecked" (change)="updateInitComponent()">Simular Hasp </p></div>
+    -->
+    <a mat-button id="login" routerLink="/login" *ngIf="!isLogin; else noLogin"><fa-icon [icon]="faSignIn"></fa-icon>LogIn </a>
+    <ng-template #noLogin><a mat-button id="logout" (click)="logOut()" ><fa-icon [icon]="faSignOut"></fa-icon>LogOut</a></ng-template>
     <div class="flags-div">
 
     <a class="flags" (click)="changeLanguage('es');"><img
@@ -43,7 +45,7 @@
           alt="Italiano"></a>
           <app-detalle-licencia hidden="true" [selectedLanguage]=lang ></app-detalle-licencia>
 
-          <div aling="center" *ngIf="isChecked">{{clientName}}</div>
+          <div aling="center" *ngIf="isLogin">{{clientName}}</div>
     </div>
     <mat-menu #productos="matMenu">
       <a class="submenu" mat-menu-item href="http://lsymserver.uv.es/LSyMWeb/es/sistemas/portuario" target="_blank" rel="noopener noreferrer">{{ 'PRODUCTOS.PORTUARIO' | translate }}</a>

@@ -26,10 +26,6 @@ export class NoticiasFechaComponent {
     let month = this.date.getMonth() + 1;
     let day = this.date.getDate();
 
-    alert(this.date);
-    alert(month);
-    alert(day);
-
     let monthString = "0" + month.toString();
     let dayString = "0" + day.toString();
 
@@ -41,8 +37,7 @@ export class NoticiasFechaComponent {
       this.date_news = year.toString()+ "-" + month.toString() + "-" + dayString;
     else
       this.date_news = year.toString()+ "-" + month.toString() + "-" + day.toString();
-    
-    alert(this.date_news);
+
     this.noticiasService.setNewsDate(this.date_news);
     this.router.navigate(["/noticias"]);
     }

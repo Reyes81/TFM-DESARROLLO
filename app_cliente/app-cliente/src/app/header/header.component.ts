@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import{ faBars,faHome, faInfo, faList, faAddressCard,faSignInAlt, faNewspaper} from'@fortawesome/free-solid-svg-icons';
+import{ faBars,faHome, faInfo, faSignIn, faList, faAddressCard, faSignOut, faNewspaper} from'@fortawesome/free-solid-svg-icons';
 import { ChangeTranslateService } from '../services/change-translate.service';
 import { TranslateService } from '@ngx-translate/core';
 import { HaspService } from '../services/hasp.service';
 import { SharedService } from '../services/shared.service';
 import { NoticiasService } from '../services/noticias.service';
+import { SessionService } from '../services/session.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,17 +22,34 @@ export class HeaderComponent implements OnInit {
   faList = faList;
   faAddressCard = faAddressCard;
   faBars= faBars;
-  faSignInAlt = faSignInAlt;
+  faSignIn = faSignIn;
+  faSignOut = faSignOut;
   clientName:string;
   isChecked:boolean = false;
+  isLogin: Boolean = false;
 
   lang:string='es';
 
-  constructor(private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
+  constructor(private sessionService: SessionService,private chageTranslateService:ChangeTranslateService, private translateService:TranslateService,
  private haspService:HaspService, private sharedService:SharedService, private noticiasService:NoticiasService, private router: Router, private changeDetector: ChangeDetectorRef) {
 
     this.translateService.setDefaultLang(this.lang);
     this.clientName="";
+
+    this.sessionService.username$.subscribe(username => {
+      this.clientName = username;
+    });
+  
+    this.sessionService.isLogin$.subscribe(isLogin => {
+      this.isLogin = isLogin;
+    });
+
+    if(!this.isLogin)
+    {
+      this.haspService.removeFeatures();
+      this.haspService.removeSubFeatures();
+      this.haspService.removeClientName();
+    }
 
   }
 
@@ -51,17 +69,22 @@ export class HeaderComponent implements OnInit {
 
     this.haspService.setStateHasp(this.isChecked);
 
-    if(this.isChecked==true){
-        this.haspService.generateClientName()      
-        this.clientName = this.haspService.getClientName();
-        //this.haspService.generateFeatures();
-    }
+   
+    //Cambiar lógica  por isLogin
 
-    else{
-        this.haspService.removeFeatures();
-        this.haspService.removeSubFeatures();
-        this.haspService.removeClientName();
-    }
+    //if(this.isChecked==true){
+        //this.haspService.generateClientName()      
+        //this.clientName = this.haspService.getClientName();
+        //this.haspService.generateFeatures();
+    //}
+
+    //else{
+        //this.haspService.removeFeatures();
+        //this.haspService.removeSubFeatures();
+      //  this.haspService.removeClientName();
+    //}
+
+    this.changeDetector.detectChanges();
   }
 
   goToNews(option: string): void{
@@ -75,7 +98,11 @@ export class HeaderComponent implements OnInit {
       this.changeDetector.detectChanges();
       this.router.navigate(["/noticias"]);
     }
-      
+  }
+
+  logOut(): void{
+    this.sessionService.setStateLogin(false);
+    this.router.navigate(['/inicio']);
   }
 
 }

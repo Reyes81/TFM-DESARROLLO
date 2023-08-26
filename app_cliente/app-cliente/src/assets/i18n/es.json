@@ -52,6 +52,10 @@
   "BUSCAR":"Buscar",
   "BUSCAR-FECHA": "Seleccione una fecha",
   "FECHA": "Fecha",
-  "TIPO": "Tipo"
+  "TIPO": "Tipo",
+  "BIENVENIDO": "Bienvenido",
+  "ERROR": "Error",
+  "USUARIO_INCORRECTO": "El usuario es incorrecto",
+  "USUARIO": "Usuario"
 }
 }

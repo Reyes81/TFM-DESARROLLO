@@ -43,6 +43,8 @@ export class DetalleLicenciaComponent {
   errorMessage: string = "";
 
   checkVersion: Boolean = false;
+  feature_installer_client_empty: Boolean = false;
+  installers_client_empty = false;
   actual_version: string = "";
   latest_version: string = ""
   latest_installer:any;
@@ -74,8 +76,9 @@ export class DetalleLicenciaComponent {
 
       console.log('Subscription complete:', this.actual_installer);
 
-      this.actual_version = this.actual_installer.version;
-      this.date_actual_version = this.actual_installer.published_date;
+        this.actual_version = this.actual_installer.version;
+
+        this.date_actual_version = this.actual_installer.published_date;
   
     } catch (error) {
       this.errorMessage = "error";
@@ -90,7 +93,7 @@ export class DetalleLicenciaComponent {
       this.latest_installer = await this.haspService.getLatestInstaller();
       this.date_latest_version = this.latest_installer.published_date;
       console.log('Subscription complete:', this.latest_installer);
-      // Continuar con las acciones posteriores al subscribe
+    
     } catch (error) {
       this.errorMessage = "error";
       console.error('Error during subscription:', error);
@@ -102,44 +105,62 @@ export class DetalleLicenciaComponent {
 
       try {
         this.client_installers = await this.haspService.getClientInstallers();
+       
         console.log('Subscription complete:', this.client_installers);
-        // Continuar con las acciones posteriores al subscribe
+  
       } catch (error) {
         this.errorMessage = "error";
         console.error('Error during subscription:', error);
       }
   }
 
-
   async manageVersion(): Promise<void>{
 
     const latest_date: Date = new Date(this.date_latest_version);
     
     const actual_date: Date = new Date(this.date_actual_version);
-
-    if(latest_date > actual_date)
+    alert(actual_date);
+    if(latest_date > actual_date || this.feature_installer_client_empty === true )
     {
+      alert(latest_date);
+      
+      alert("Estamos jodidos")
       this.checkVersion = true;
       this.latest_version = this.latest_installer.version;
-    }
+    }    
   }
 
   async updateComponent(): Promise<void>{
 
+    let check: Boolean = false;
     this.feature = this.haspService.getFeature(); 
     this.license = this.haspService.getLicense();
-    await this.getLatestInstaller();
-    await this.getLatestInstallerClient();
-    
-
-    this.subfeatures = this.haspService.getSubFeatures();
-    this.subfeatures_license = this.license.subfeatures;
-
-    this.actual_changeLog = this.actual_installer.changeLog.split('\r\n');
-     
     this.title = this.feature;
     this.path_image = "assets/img/slider/" + this.feature + ".jpg" 
 
+    await this.getLatestInstaller();
+    await this.getClientInstallers();
+
+    if(Object.keys(this.client_installers).length === 0){
+      this.installers_client_empty = true;
+      this.feature_installer_client_empty = true;
+    }
+    else{
+      for (const client_installer of this.client_installers) {
+        if (client_installer.feature === this.feature) {
+          await this.getLatestInstallerClient();
+          this.actual_changeLog = this.actual_installer.changeLog.split('\r\n');
+          this.feature_installer_client_empty = false;
+          check = true;
+        } 
+        }
+      if (check === false)
+      this.feature_installer_client_empty = true;
+        
+    }
+
+    this.subfeatures = this.haspService.getSubFeatures();
+    this.subfeatures_license = this.license.subfeatures;
     this.manageVersion();
   }
   openLink() {

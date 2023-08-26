@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+     
+     <div class="formulario">
+            <div class="card" style="width: 30rem; box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div style="display:flex; align-items: center; justify-content: center; margin-top: 15px;"> 
+                            <img src="assets/images/logo.png" alt="logo lsym" width="60px" height="70px">
+                        </div>
+                    <h2 style="display:flex; align-items: center; justify-content: center; font-family: Helvetica; margin-top:10px">Login</h2>
+                    <hr>
+                    <form method="post" [formGroup]= "loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group" style="display:flex;justify-content:center; margin-top:10px">
+                        <i class="fas fa-user" style="margin-top:7px;"></i>
+                        <label for="id_username" style="margin-right:5px;margin-top:5px;">Username</label>
+                        <br>
+                        <input style="margin-top:3px; width:250px;" formControlName="username" placeholder="Nombre de Usuario" type="text"  name="username"  required>
+                        <span [hidden]="!(erroresForm.username)">{{erroresForm.username}}</span> 
+                    </div>
+                    <div class="form-group" style="display:flex;justify-content:center; margin-top:10px">
+                        <i class="fas fa-lock" style="margin-top:7px;"></i>
+                        <label for="id_password" style="margin-right:5px;margin-top:5px;">Password</label>
+                        <br>
+                        <input style="margin-top:3px; width:250px;" formControlName="password" placeholder="Password" type="password"  name="password" required>
+                        <span [hidden]="!(erroresForm.password)">{{erroresForm.password}}</span> 
+                    </div>
+                    <div style="display:flex; align-items: center; justify-content: center;">
+                        <button type="submit" class="btn btn-primary" style="margin-top:20px; margin-bottom:20px; width:100px">Login</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+     </div>

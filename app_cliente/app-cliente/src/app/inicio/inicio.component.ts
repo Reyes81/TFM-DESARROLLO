@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HaspService } from '../services/hasp.service';
 import { SharedService } from '../services/shared.service';
+import { SessionService } from '../services/session.service';
 
 
 @Component({
@@ -12,13 +13,18 @@ import { SharedService } from '../services/shared.service';
 export class InicioComponent {
 
  checkboxValue:boolean = false; 
-  constructor(private haspService:HaspService, private sharedService:SharedService) {
+ checkLoginValue: Boolean = false;
+  constructor(private sessionService: SessionService,private haspService:HaspService, private sharedService:SharedService) {
     
   }
  
   ngOnInit(): void {
     this.sharedService.getCheckboxValue().subscribe(value => {
       this.checkboxValue = value;
+    });
+
+    this.sessionService.getStateLogin().subscribe(value => {
+      this.checkLoginValue = value;
     });
   }
 }

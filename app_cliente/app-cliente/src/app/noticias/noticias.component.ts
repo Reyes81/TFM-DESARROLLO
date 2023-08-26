@@ -22,7 +22,7 @@ export class NoticiasComponent {
   datosMostrados: Boolean = false;
   private opcionSubscription: Subscription;
 
-  constructor(private cdr:ChangeDetectorRef, private noticiasService:NoticiasService,private translateService:ChangeTranslateService, ) {
+  constructor(private cdr:ChangeDetectorRef, private noticiasService:NoticiasService,private translateService:ChangeTranslateService) {
     this.opcionSubscription = this.noticiasService.getOption().subscribe(option_news => {
       this.option = option_news;
       switch (this.option){

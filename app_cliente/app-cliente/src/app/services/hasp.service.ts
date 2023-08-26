@@ -27,6 +27,7 @@ export class HaspService {
   lastFeatureIndex:number;
   featureIndex:number;
   isChecked:Boolean = false;
+  isLogin:Boolean = false;
   licenses:any[] = [];
   license:any;
   licensesNumbers: string[] = [];
@@ -208,6 +209,10 @@ export class HaspService {
     
   }
 
+  setClientName(name_client: string): void{
+    this.clientName = name_client;
+  }
+
   getClientName(): string{
     return this.clientName;
   }
@@ -275,12 +280,12 @@ export class HaspService {
    
     let clientNameHash: string = MD5(this.getClientName()).toString();
 
-    let url = baseURL_SERVER + '/getInstallersByClientName/' + clientNameHash;
+    let url = baseURL_SERVER + '/getInstallersByClientName/' + clientNameHash + '/';
 
     return this.http.get<any[]>(url)
       .toPromise() 
       .then((data: any[]) => {
-        this.licenses = data;
+        this.installers = data;
         return data;
       })
       .catch((error) => {
@@ -310,12 +315,13 @@ export class HaspService {
   //Obtenemos el instalador más actual de una feature
   getLatestInstaller(): Promise<any>{
 
-    let url = baseURL_SERVER + '/getLatestInstaller/' + this.getFeature();
-
+    let url = baseURL_SERVER + '/getLatestInstaller/' + this.getFeature() + '/';
+    alert(url);
     return this.http.get<any>(url)
       .toPromise() 
       .then((data: any) => {
         this.latest_installer = data;
+        alert(this.latest_installer);
         return data;
       })
       .catch((error) => {
@@ -330,7 +336,7 @@ export class HaspService {
 
     let clientNameHash: string = MD5(this.getClientName()).toString();
 
-    let url = baseURL_SERVER + '/getLatestInstallerClient/' + clientNameHash + "/" + this.getFeature();
+    let url = baseURL_SERVER + '/getLatestInstallerClient/' + clientNameHash + "/" + this.getFeature() + '/';
 
     return this.http.get<any>(url)
       .toPromise() 
@@ -367,4 +373,6 @@ export class HaspService {
   getStateHasp():Boolean{
     return this.isChecked;
   }
+
+ 
 }
